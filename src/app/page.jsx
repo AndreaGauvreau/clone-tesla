@@ -1,5 +1,5 @@
 'use client'
-import {Flex, Heading} from '@chakra-ui/react'
+import {Box, Flex, Heading} from '@chakra-ui/react'
 import MainSection from '../component/MainSection/MainSection'
 import MainMenu from '../component/ui/MainMenu'
 
@@ -80,7 +80,7 @@ export default function Home() {
   ]
   return (
     <Flex
-      w={'100vw'}
+      w={'99vw'}
       h={'100vh'}
       justifyContent={'flex-start'}
       alignItems={'center'}

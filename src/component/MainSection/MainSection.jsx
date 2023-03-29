@@ -4,8 +4,9 @@ import Link from 'next/link'
 import React, {useRef, useState} from 'react'
 import {useMotionValueEvent, useScroll} from 'framer-motion'
 import {colors} from '../ui/color'
+import Image from 'next/image'
 
-export default function MainSection({pageInfos}) {
+export default function MainSection({pageInfos, index}) {
   const [opacity, setOpacity] = useState(0)
   const boxref = useRef()
   const {scrollYProgress} = useScroll({
@@ -31,7 +32,6 @@ export default function MainSection({pageInfos}) {
         justifyContent={'space-between'}
         alignItems="center"
         h={'70vh'}
-        w={'100vw'}
       >
         <Flex flexDirection="column" opacity={opacity} alignItems="center">
           <Heading fontSize={'5xl'} textAlign="center">
@@ -47,13 +47,20 @@ export default function MainSection({pageInfos}) {
             ''
           )}
         </Flex>
-        <Flex flexDirection="column" alignItems={'center'} gap={5} w={'100%'}>
+        <Flex
+          flexDirection="column"
+          alignItems={'center'}
+          gap={5}
+          w={'100%'}
+          boxSizing="border-box"
+        >
           <Flex
             flexDirection={{base: 'column', md: 'row'}}
             gap={5}
             p={5}
             w={'100%'}
             justifyContent="center"
+            boxSizing="border-box"
           >
             <Link href={pageInfos?.bntLlink}>
               <Button
@@ -90,17 +97,33 @@ export default function MainSection({pageInfos}) {
         </Flex>
       </Flex>
       <Flex
-        w={'100vw'}
+        w={'100%'}
         minH={'100vh'}
-        bg={`url(${pageInfos?.image}) no-repeat center center / cover`}
         justifyContent="space-between"
         alignItems={'center'}
         flexDirection="column"
-        pt={'15%'}
-        pb={'20px'}
         ref={boxref}
         className="sectionscroll"
-      ></Flex>
+      >
+        <Box w={'100%'} h={'100%'} position={'relative'} pt={'15%'} pb={'20px'}>
+          {index === 0 ? (
+            <Image
+              src={pageInfos?.image}
+              alt={pageInfos?.lastSubtitle}
+              fill
+              priority
+              objectFit="cover"
+            />
+          ) : (
+            <Image
+              src={pageInfos?.image}
+              alt={pageInfos?.lastSubtitle}
+              fill
+              objectFit="cover"
+            />
+          )}
+        </Box>
+      </Flex>
     </>
   )
 }
