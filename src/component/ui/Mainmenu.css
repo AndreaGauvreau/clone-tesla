@@ -1,0 +1,8 @@
+.overlay {
+  transition: 0.5s cubic-bezier(0.75, 0, 0.1, 1);
+  backdrop-filter: blur(6px);
+  border-radius: 5px;
+}
+.hoveredLink {
+  font-size: 14px;
+}
