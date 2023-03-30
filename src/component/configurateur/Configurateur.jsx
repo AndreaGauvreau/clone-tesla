@@ -4,6 +4,7 @@ import React from 'react'
 import {colors} from '../ui/color'
 import MenuConfig from '../ui/MenuConfig'
 import PerformanceDetail from './ConfigComp/PerformanceDetail'
+import RecapConfig from './ConfigComp/RecapConfig'
 import SelectColors from './ConfigComp/SelectColors'
 import SelectedWheels from './ConfigComp/SelectedWheels'
 import SliderConfig from './ConfigComp/SliderConfig'
@@ -61,6 +62,7 @@ export default function Configurateur({
           objectFit="cover"
           position={'relative'}
         >
+          <RecapConfig state={state} />
           <SliderConfig
             listImage={listImage}
             setSliderIndex={setSliderIndex}
@@ -177,7 +179,7 @@ export default function Configurateur({
             flexDirection={'column'}
             alignItems="center"
             gap={5}
-            my={'20vh'}
+            my={'50px'}
           >
             <Heading variant={'headModelsub'}>Couleur</Heading>
             <SelectColors
@@ -192,7 +194,7 @@ export default function Configurateur({
             flexDirection={'column'}
             alignItems="center"
             gap={5}
-            mb={'10vh'}
+            my={'50px'}
           >
             <Heading variant={'headModelsub'}>Jantes</Heading>
             <SelectedWheels

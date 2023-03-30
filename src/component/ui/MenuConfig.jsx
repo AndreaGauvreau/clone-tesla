@@ -31,7 +31,9 @@ export default function MenuConfig() {
       >
         <Flex justifyContent={'flex-start'} w={'25%'}>
           <Box>
-            <Image src="/images/logo-b.png" width={120} height={50} />
+            <Link href={'/'}>
+              <Image src="/images/logo-b.png" width={120} height={50} />
+            </Link>
           </Box>
         </Flex>
       </Flex>

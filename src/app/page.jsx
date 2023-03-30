@@ -6,6 +6,7 @@ import MainMenu from '../component/ui/MainMenu'
 export default function Home() {
   const pageInfos = [
     {
+      id: 0,
       title: 'Model Y',
       image: '/images/model-y.webp',
       subtitle: 'Réservez votre essai',
@@ -18,6 +19,7 @@ export default function Home() {
       lastSubtitleLink: '/configurateur',
     },
     {
+      id: 1,
       title: 'Model 3',
       image: '/images/model-3.webp',
       subtitle: 'Réservez votre essai',
@@ -30,6 +32,7 @@ export default function Home() {
       lastSubtitleLink: '/configurateur',
     },
     {
+      id: 2,
       title: 'Model S',
       image: '/images/model-s.webp',
       subtitle: 'Réservez votre essai',
@@ -42,6 +45,7 @@ export default function Home() {
       lastSubtitleLink: '',
     },
     {
+      id: 3,
       title: 'Model X',
       image: '/images/model-x.webp',
       subtitle: '',
@@ -54,6 +58,7 @@ export default function Home() {
       lastSubtitleLink: '',
     },
     {
+      id: 4,
       title: "Systèmes d'énergie solaire et Powerwalls",
       image: '/images/powerwall.jpeg',
       subtitle: 'De l’énergie pour tous vos besoins',
@@ -66,6 +71,7 @@ export default function Home() {
       lastSubtitleLink: '',
     },
     {
+      id: 5,
       title: 'Accessoires',
       image: '/images/charge.jpeg',
       subtitle: '',
@@ -88,7 +94,7 @@ export default function Home() {
     >
       <MainMenu />
       {pageInfos?.map((e, index) => (
-        <MainSection key={index} pageInfos={pageInfos[index]} />
+        <MainSection key={index} pageInfos={pageInfos[index]} index={index} />
       ))}
     </Flex>
   )

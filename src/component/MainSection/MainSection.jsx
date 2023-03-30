@@ -1,13 +1,12 @@
-'use client'
 import {Box, Button, Flex, Heading, Text} from '@chakra-ui/react'
 import Link from 'next/link'
 import React, {useRef, useState} from 'react'
 import {useMotionValueEvent, useScroll} from 'framer-motion'
-import {colors} from '../ui/color'
 import Image from 'next/image'
 
 export default function MainSection({pageInfos, index}) {
   const [opacity, setOpacity] = useState(0)
+  const [isdelete, setisDelete] = useState(false)
   const boxref = useRef()
   const {scrollYProgress} = useScroll({
     target: boxref,
@@ -17,14 +16,17 @@ export default function MainSection({pageInfos, index}) {
     console.log(pageInfos?.title, e)
     if (e < 0.7) {
       setOpacity(0 + e * 3)
-    } else {
+    } else if (e > 0.7) {
       setOpacity(1 - e)
+    } else if (e === 1) {
+      setisDelete(true)
+    } else if (e === 0) {
+      setisDelete(false)
     }
   })
   return (
     <>
       <Flex
-        zIndex={10}
         position={'fixed'}
         top={'15vh'}
         opacity={opacity}
@@ -32,6 +34,7 @@ export default function MainSection({pageInfos, index}) {
         justifyContent={'space-between'}
         alignItems="center"
         h={'80vh'}
+        zIndex={2 + index}
       >
         <Flex
           flexDirection="column"
@@ -96,7 +99,14 @@ export default function MainSection({pageInfos, index}) {
         ref={boxref}
         className="sectionscroll"
       >
-        <Box w={'100%'} h={'100%'} position={'relative'} pt={'15%'} pb={'20px'}>
+        <Box
+          w={'100%'}
+          h={'100%'}
+          position={'relative'}
+          pt={'15%'}
+          pb={'20px'}
+          display={isdelete ? 'none' : 'flex'}
+        >
           {index === 0 ? (
             <Image
               src={pageInfos?.image}
@@ -104,6 +114,7 @@ export default function MainSection({pageInfos, index}) {
               fill
               priority
               objectFit="cover"
+              quality={100}
             />
           ) : (
             <Image
@@ -111,6 +122,7 @@ export default function MainSection({pageInfos, index}) {
               alt={pageInfos?.lastSubtitle}
               fill
               objectFit="cover"
+              quality={100}
             />
           )}
         </Box>

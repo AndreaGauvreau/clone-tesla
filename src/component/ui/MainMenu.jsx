@@ -29,8 +29,8 @@ export default function MainMenu() {
       const rect = e.target.getBoundingClientRect()
       overlay.style.opacity = '1'
       overlay.style.width = `${rect.width + 30}px`
-      overlay.style.height = `${rect.height + 10}px`
-      overlay.style.top = `${rect.top - 5}px`
+      overlay.style.height = `${rect.height + 20}px`
+      overlay.style.top = `${rect.top - 10}px`
       overlay.style.left = `${rect.left - 15}px`
       clearTimeout(timeout)
     }
@@ -172,7 +172,7 @@ export default function MainMenu() {
               Compte
             </Text>
           </Link>
-          <Text onClick={onOpen} cursor="pointer">
+          <Text variant={'menuLink'} onClick={onOpen} cursor="pointer">
             Menu
           </Text>
         </Flex>
@@ -185,6 +185,7 @@ export default function MainMenu() {
           backdropFilter={'blur(6px)'}
           px={4}
           py={1}
+          variant={'menuLink'}
         >
           Menu
         </Text>

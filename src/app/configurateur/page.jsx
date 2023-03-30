@@ -1,5 +1,5 @@
 'use client'
-import React, {useReducer, useState} from 'react'
+import React, {useEffect, useReducer, useState} from 'react'
 import Configurateur from '../../component/configurateur/Configurateur'
 
 const initialState = {
@@ -12,6 +12,7 @@ const initialState = {
   autonome: false,
   recharge: false,
   sliderindex: 0,
+  price: 0,
 }
 
 function carConfigReducer(state, action) {
@@ -26,6 +27,8 @@ function carConfigReducer(state, action) {
       return {...state, selectedInterColor: action.payload}
     case 'SET_SELECTED_SLIDER_INDEX':
       return {...state, sliderindex: action.payload}
+    case 'SET_PRICE':
+      return {...state, price: action.payload}
     default:
       return state
   }
@@ -90,6 +93,7 @@ export default function page() {
       zerocent: 6.1,
       isperf: false,
       price: '44 990 €',
+      pricevalue: 44990,
     },
     {
       model: 'Model 3 Grande Autonomie',
@@ -98,6 +102,7 @@ export default function page() {
       zerocent: 4.4,
       isperf: false,
       price: '52 990 €',
+      pricevalue: 52990,
     },
     {
       model: 'Model 3 Performance',
@@ -106,6 +111,7 @@ export default function page() {
       zerocent: 3.3,
       isperf: true,
       price: '59 990 €',
+      pricevalue: 59990,
     },
   ]
 
@@ -115,8 +121,53 @@ export default function page() {
     {id: 2, image: '/images/configurateur/side.jpeg'},
     {id: 3, image: '/images/configurateur/wheel.jpeg'},
   ]
-
+  useEffect(() => {
+    const newPrice = calculateTotalPrice()
+    dispatch({type: 'SET_PRICE', payload: newPrice})
+  }, [
+    state.selectedCar,
+    state.selectedColor,
+    state.selectedInterColor,
+    state.crochet,
+    state.autopilot,
+    state.autonome,
+    state.recharge,
+  ])
   const car = model3[state.selectedCar]
+  const calculateTotalPrice = () => {
+    let totalPrice = model3[state.selectedCar].pricevalue
+
+    if (state.selectedColor === 2) {
+      totalPrice += 3000
+    } else if (state.selectedColor === 3) {
+      totalPrice += 1600
+    } else if (state.selectedColor === 4) {
+      totalPrice += 3200
+    }
+
+    if (state.selectedInterColor === 1) {
+      totalPrice += 1190
+    }
+
+    if (state.crochet) {
+      totalPrice += 1350
+    }
+
+    if (state.autopilot) {
+      totalPrice += 3800
+    }
+
+    if (state.autonome) {
+      totalPrice += 7500
+    }
+
+    if (state.recharge) {
+      totalPrice += 500
+    }
+
+    return totalPrice
+  }
+
   return (
     <Configurateur
       car={car}
