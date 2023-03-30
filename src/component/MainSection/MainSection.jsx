@@ -26,23 +26,28 @@ export default function MainSection({pageInfos, index}) {
       <Flex
         zIndex={10}
         position={'fixed'}
-        top={'20vh'}
+        top={'15vh'}
         opacity={opacity}
         flexDirection="column"
         justifyContent={'space-between'}
         alignItems="center"
-        h={'70vh'}
+        h={'80vh'}
       >
-        <Flex flexDirection="column" opacity={opacity} alignItems="center">
-          <Heading fontSize={'5xl'} textAlign="center">
+        <Flex
+          flexDirection="column"
+          opacity={opacity}
+          alignItems="center"
+          gap={0}
+        >
+          <Heading variant={'headModel'} textAlign="center">
             {pageInfos?.title}
           </Heading>
           {pageInfos?.subtitleLink ? (
             <Link href={pageInfos?.subtitleLink}>
-              <Text>{pageInfos?.subtitle}</Text>
+              <Text variant={'linkText'}>{pageInfos?.subtitle}</Text>
             </Link>
           ) : pageInfos?.subtitle ? (
-            <Text>{pageInfos?.subtitle}</Text>
+            <Text variant={'linkNoText'}>{pageInfos?.subtitle}</Text>
           ) : (
             ''
           )}
@@ -63,25 +68,11 @@ export default function MainSection({pageInfos, index}) {
             boxSizing="border-box"
           >
             <Link href={pageInfos?.bntLlink}>
-              <Button
-                bg={colors.btn1}
-                color={'white'}
-                borderRadius={5}
-                fontSize={'sm'}
-                w={{base: 'full', md: '350px'}}
-              >
-                {pageInfos?.btnL}
-              </Button>
+              <Button variant={'BtnLlink'}>{pageInfos?.btnL}</Button>
             </Link>
             {pageInfos?.btnRlink ? (
               <Link href={pageInfos?.btnRlink}>
-                <Button
-                  borderRadius={5}
-                  fontSize={'sm'}
-                  w={{base: '100%', md: '350px'}}
-                >
-                  {pageInfos?.btnR}
-                </Button>
+                <Button variant={'BtnRlink'}>{pageInfos?.btnR}</Button>
               </Link>
             ) : (
               ''
@@ -89,7 +80,7 @@ export default function MainSection({pageInfos, index}) {
           </Flex>
           {pageInfos?.lastSubtitleLink ? (
             <Link href={pageInfos?.lastSubtitleLink}>
-              <Text>{pageInfos?.lastSubtitle}</Text>
+              <Text variant={'linkText'}>{pageInfos?.lastSubtitle}</Text>
             </Link>
           ) : (
             ''

@@ -20,10 +20,11 @@ export default function Configurateur({
         }
         onClick={() => setSelectedCar(carNb)}
         justifyContent="space-between"
-        alignItems={'space-between'}
+        alignItems={'center'}
         p={2}
         borderRadius={3}
         transition={'0.3s'}
+        h={'50px'}
       >
         <Text> {model3[carNb].model}</Text>
         <Text> {model3[carNb].price}</Text>
@@ -45,10 +46,11 @@ export default function Configurateur({
         bg={'url(/images/model-3.webp)  no-repeat center center / cover'}
       ></Flex>
       <Flex
-        w={{base: '100%', lg: '550px'}}
+        w={{base: '100%', lg: '500px'}}
         h={'100vh'}
         overflowY={{base: 'auto', lg: 'scroll'}}
         p={5}
+        px={10}
         flexDirection={'column'}
         alignItems="center"
         gap={10}
@@ -79,7 +81,7 @@ export default function Configurateur({
               </Text>
             </Flex>
             <Flex flexDirection={'column'} alignItems={'center '}>
-              <Text fontSize={'sm'}>autonomie</Text>
+              <Text variant={'text1'}>autonomie</Text>
               <Text fontSize={'sm'}>(WLTP)</Text>
             </Flex>
           </Flex>

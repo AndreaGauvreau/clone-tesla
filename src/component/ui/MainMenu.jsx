@@ -42,14 +42,14 @@ export default function MainMenu() {
     }
 
     elements.forEach(element => {
-      element.addEventListener('mouseenter', handleMouseEnter)
-      element.addEventListener('mouseleave', handleMouseLeave)
+      element?.addEventListener('mouseenter', handleMouseEnter)
+      element?.addEventListener('mouseleave', handleMouseLeave)
     })
 
     return () => {
       elements.forEach(element => {
-        element.removeEventListener('mouseenter', handleMouseEnter)
-        element.removeEventListener('mouseleave', handleMouseLeave)
+        element?.removeEventListener('mouseenter', handleMouseEnter)
+        element?.removeEventListener('mouseleave', handleMouseLeave)
       })
     }
   }, [])
@@ -69,7 +69,7 @@ export default function MainMenu() {
         w={'100vw'}
         zIndex={99}
         flexDirection="row"
-        px={{base: 5, lg: 20}}
+        px={{base: 5, xl: 20}}
         justifyContent={'space-between'}
         py={5}
       >
@@ -79,13 +79,14 @@ export default function MainMenu() {
           </Box>
         </Flex>
         <Flex
-          gap={7}
+          gap={8}
           justifyContent={'center'}
           w={'50%'}
-          display={{base: 'none', lg: 'flex'}}
+          display={{base: 'none', xl: 'flex'}}
         >
           <Link href={'/configurateur'}>
             <Text
+              variant={'menuLink'}
               className="hoveredLink"
               ref={el => elementsRef.current.push(el)}
             >
@@ -95,6 +96,7 @@ export default function MainMenu() {
           <Link href={'/configurateur'}>
             <Text
               className="hoveredLink"
+              variant={'menuLink'}
               ref={el => elementsRef.current.push(el)}
             >
               Model 3
@@ -103,6 +105,7 @@ export default function MainMenu() {
           <Link href={'/configurateur'}>
             <Text
               className="hoveredLink"
+              variant={'menuLink'}
               ref={el => elementsRef.current.push(el)}
             >
               Model X
@@ -111,6 +114,7 @@ export default function MainMenu() {
           <Link href={'/configurateur'}>
             <Text
               className="hoveredLink"
+              variant={'menuLink'}
               ref={el => elementsRef.current.push(el)}
             >
               Model Y
@@ -119,6 +123,7 @@ export default function MainMenu() {
           <Link href={'/configurateur'}>
             <Text
               className="hoveredLink"
+              variant={'menuLink'}
               ref={el => elementsRef.current.push(el)}
             >
               Powerwall
@@ -127,6 +132,7 @@ export default function MainMenu() {
           <Link href={'/configurateur'}>
             <Text
               className="hoveredLink"
+              variant={'menuLink'}
               ref={el => elementsRef.current.push(el)}
             >
               Recharge
@@ -134,14 +140,15 @@ export default function MainMenu() {
           </Link>
         </Flex>
         <Flex
-          gap={7}
+          gap={8}
           justifyContent={'flex-end'}
           w={'25%'}
-          display={{base: 'none', lg: 'flex'}}
+          display={{base: 'none', xl: 'flex'}}
         >
           <Link href={'/configurateur'}>
             <Text
               className="hoveredLink"
+              variant={'menuLink'}
               ref={el => elementsRef.current.push(el)}
             >
               Assistance
@@ -150,6 +157,7 @@ export default function MainMenu() {
           <Link href={'/configurateur'}>
             <Text
               className="hoveredLink"
+              variant={'menuLink'}
               ref={el => elementsRef.current.push(el)}
             >
               Shop
@@ -158,6 +166,7 @@ export default function MainMenu() {
           <Link href={'/configurateur'}>
             <Text
               className="hoveredLink"
+              variant={'menuLink'}
               ref={el => elementsRef.current.push(el)}
             >
               Compte
@@ -170,7 +179,7 @@ export default function MainMenu() {
         <Text
           onClick={onOpen}
           cursor="pointer"
-          display={{base: 'inline', lg: 'none'}}
+          display={{base: 'inline', xl: 'none'}}
           borderRadius={5}
           bg={'#00000010'}
           backdropFilter={'blur(6px)'}
@@ -212,6 +221,7 @@ export default function MainMenu() {
                     <Link key={item} href="/#">
                       <Text
                         className="hoveredLink"
+                        variant={'menuLink'}
                         ref={el => elementsRef.current.push(el)}
                       >
                         {item}
