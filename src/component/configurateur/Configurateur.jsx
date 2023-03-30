@@ -2,7 +2,10 @@ import {WarningIcon} from '@chakra-ui/icons'
 import {Box, Button, Flex, Heading, Text} from '@chakra-ui/react'
 import React from 'react'
 import {colors} from '../ui/color'
+import PerformanceDetail from './ConfigComp/PerformanceDetail'
 import SelectColors from './ConfigComp/SelectColors'
+import SelectedWheels from './ConfigComp/SelectedWheels'
+import SliderConfig from './ConfigComp/SliderConfig'
 
 export default function Configurateur({
   car,
@@ -13,6 +16,9 @@ export default function Configurateur({
   selectedColor,
   state,
   setSelectedColor,
+  wheelscar,
+  listImage,
+  setSliderIndex,
 }) {
   const SelectCar = ({carNb}) => {
     return (
@@ -49,8 +55,15 @@ export default function Configurateur({
       <Flex
         w={{base: '100%', lg: 'full'}}
         h={'100vh'}
-        bg={'url(/images/model-3.webp)  no-repeat center center / cover'}
-      ></Flex>
+        objectFit="cover"
+        position={'relative'}
+      >
+        <SliderConfig
+          listImage={listImage}
+          setSliderIndex={setSliderIndex}
+          state={state}
+        />
+      </Flex>
       <Flex
         w={{base: '100%', lg: '600px'}}
         h={'100vh'}
@@ -155,10 +168,21 @@ export default function Configurateur({
             </Button>
           </Flex>
         </Flex>
-        <Flex flexDirection={'column'} alignItems="center" gap={5} my={'26vh'}>
+        {state?.selectedCar === 2 ? <PerformanceDetail /> : ''}{' '}
+        <Flex flexDirection={'column'} alignItems="center" gap={5} my={'20vh'}>
           <Heading variant={'headModelsub'}>Couleur</Heading>
           <SelectColors
             colorsCar={colorsCar}
+            selectedCar={selectedCar}
+            setSelectedColor={setSelectedColor}
+            selectedColor={selectedColor}
+            state={state}
+          />
+        </Flex>
+        <Flex flexDirection={'column'} alignItems="center" gap={5} mb={'10vh'}>
+          <Heading variant={'headModelsub'}>Jantes</Heading>
+          <SelectedWheels
+            wheelscar={wheelscar}
             selectedCar={selectedCar}
             setSelectedColor={setSelectedColor}
             selectedColor={selectedColor}

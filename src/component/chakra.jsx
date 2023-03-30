@@ -42,7 +42,11 @@ const theme = extendTheme({
           textDecoration: 'none',
           fontFamily: 'Gotham Medium',
         },
-        menuLink: {fontSize: '14px'},
+        menuLink: {
+          fontSize: '14px',
+          lineHeight: '14px',
+          fontFamily: 'Gotham Medium',
+        },
         tinyFont: {
           fontSize: '13px',
           fontFamily: 'Gotham Light',

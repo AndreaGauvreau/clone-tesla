@@ -5,8 +5,13 @@ import Configurateur from '../../component/configurateur/Configurateur'
 const initialState = {
   selectedCar: 0,
   selectedColor: 1,
-  selectedWheels: null,
+  selectedWheels: 0,
   selectedInterColor: null,
+  crochet: false,
+  autopilot: false,
+  autonome: false,
+  recharge: false,
+  sliderindex: 0,
 }
 
 function carConfigReducer(state, action) {
@@ -19,6 +24,8 @@ function carConfigReducer(state, action) {
       return {...state, selectedWheels: action.payload}
     case 'SET_SELECTED_INTER_COLOR':
       return {...state, selectedInterColor: action.payload}
+    case 'SET_SELECTED_SLIDER_INDEX':
+      return {...state, sliderindex: action.payload}
     default:
       return state
   }
@@ -27,11 +34,52 @@ export default function page() {
   const [state, dispatch] = useReducer(carConfigReducer, initialState)
 
   const colorsCar = [
-    {color: 'white', image: '/images/configurateur/Paint_White.avif'},
-    {color: 'black', image: '/images/configurateur/Paint_Black.avif'},
-    {color: 'grey', image: '/images/configurateur/Paint_MidnightSilver.avif'},
-    {color: 'blue', image: '/images/configurateur/Paint_Blue.avif'},
-    {color: 'red', image: '/images/configurateur/Paint_Red.avif'},
+    {
+      color: 'white',
+      image: '/images/configurateur/Paint_White.avif',
+      prix: 'De série',
+      name: 'Blanc Nacré Multicouches',
+      description: '',
+    },
+    {
+      color: 'black',
+      image: '/images/configurateur/Paint_Black.avif',
+      prix: 'De série',
+      name: 'Noir Uni',
+      description: '',
+    },
+    {
+      color: 'grey',
+      image: '/images/configurateur/Paint_MidnightSilver.avif',
+      prix: '3 000 €',
+      name: 'Quicksilver',
+      description:
+        'Développées à la Gigafactory de Berlin. Uniquement disponibles en Europe et au Moyen-Orient.',
+    },
+    {
+      color: 'blue',
+      image: '/images/configurateur/Paint_Blue.avif',
+      prix: '1 600 €',
+      name: 'Bleu Outremer Métallisé',
+      description: '',
+    },
+    {
+      color: 'red',
+      image: '/images/configurateur/Paint_Red.avif',
+      prix: '3 200 €',
+      name: 'Midnight Cherry Red',
+      description:
+        'Développées à la Gigafactory de Berlin. Uniquement disponibles en Europe et au Moyen-Orient.',
+    },
+  ]
+  const wheelscar = [
+    {
+      id: 1,
+      name: 'Jantes Überturbine 21"',
+      prix: 'De série',
+      description: 'Autonomie certifiée (WLTP) : 514 km',
+      image: '/images/configurateur/wheel.avif',
+    },
   ]
 
   const model3 = [
@@ -61,6 +109,13 @@ export default function page() {
     },
   ]
 
+  const listImage = [
+    {id: 0, image: '/images/configurateur/back.jpeg'},
+    {id: 1, image: '/images/configurateur/front.jpeg'},
+    {id: 2, image: '/images/configurateur/side.jpeg'},
+    {id: 3, image: '/images/configurateur/wheel.jpeg'},
+  ]
+
   const car = model3[state.selectedCar]
   return (
     <Configurateur
@@ -78,6 +133,11 @@ export default function page() {
       setSelectedInternColor={color =>
         dispatch({type: 'SET_SELECTED_INTER_COLOR', payload: color})
       }
+      setSliderIndex={index =>
+        dispatch({type: 'SET_SELECTED_SLIDER_INDEX', payload: index})
+      }
+      wheelscar={wheelscar}
+      listImage={listImage}
     />
   )
 }

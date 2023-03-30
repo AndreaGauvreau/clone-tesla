@@ -3,22 +3,16 @@ import Image from 'next/image'
 import React from 'react'
 import {colors} from '../../ui/color'
 
-export default function SelectColors({
-  colorsCar,
-  setSelectedColor,
-  selectedCar,
-  selectedColor,
-  state,
-}) {
+export default function SelectedWheels({wheelscar, setSelectedColor, state}) {
   return (
     <>
       <Flex flexDirection={'row'} gap={2}>
-        {colorsCar?.map((e, index) => (
+        {wheelscar?.map((e, index) => (
           <Box
             cursor={'pointer'}
             border={'3px solid white'}
             boxShadow={
-              state?.selectedColor === index
+              state?.selectedWheels === index
                 ? `0 0 0 3px ${colors.blue}`
                 : `0 0 0 0px ${colors.blue}`
             }
@@ -38,14 +32,14 @@ export default function SelectColors({
         h={'auto'}
       >
         <Text variant={'menuLink'}>
-          {colorsCar[state?.selectedColor]?.name}
+          {wheelscar[state?.selectedWheels]?.name}
         </Text>
         <Text variant={'lightSubtile'} mt={1}>
-          {colorsCar[state?.selectedColor]?.prix}
+          {wheelscar[state?.selectedWheels]?.prix}
         </Text>
       </Flex>
-      <Text textAlign={'center'} variant={'tinyFont'}>
-        {colorsCar[state?.selectedColor]?.description}
+      <Text textAlign={'center'} variant={'lightSubtile'} mt={-4}>
+        {wheelscar[state?.selectedWheels]?.description}
       </Text>
     </>
   )
