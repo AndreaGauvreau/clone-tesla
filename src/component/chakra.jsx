@@ -31,6 +31,11 @@ const theme = extendTheme({
           fontFamily: 'Gotham Book',
           textUnderlineOffset: '3px',
         },
+        nolinkText: {
+          fontSize: '14px',
+          fontWeight: '200',
+          fontFamily: 'Gotham Book',
+        },
         linkNoText: {
           fontSize: '17px',
           fontWeight: '200',
@@ -38,11 +43,35 @@ const theme = extendTheme({
           fontFamily: 'Gotham Medium',
         },
         menuLink: {fontSize: '14px'},
+        tinyFont: {
+          fontSize: '13px',
+          fontFamily: 'Gotham Light',
+          lineHeight: '14px',
+        },
+        mediumFont: {
+          fontSize: '24px',
+          lineHeight: '18px',
+          fontWeight: '900',
+          fontFamily: 'Gotham Book',
+        },
+        smallFont: {
+          fontSize: '14px',
+          lineHeight: '14px',
+          fontWeight: '900',
+          fontFamily: 'Gotham Book',
+        },
+        lightSubtile: {
+          fontSize: '14px',
+          lineHeight: '14px',
+          fontWeight: '500',
+          fontFamily: 'Gotham Book',
+        },
       },
     },
     Heading: {
       variants: {
         headModel: {fontSize: '40px', lineHeight: '30px'},
+        headModelsub: {fontSize: '28px', lineHeight: '25px'},
       },
     },
     Button: {
@@ -63,7 +92,14 @@ const theme = extendTheme({
           fontSize: '14px',
           fontWeight: 'normal',
         },
-        head3: {fontSize: '18px'},
+        btnSmall: {
+          color: colors.btn1,
+          bg: '#00000010',
+          borderRadius: 5,
+          w: {base: 'full', md: '50%'},
+          fontSize: '12px',
+          fontWeight: 'normal',
+        },
       },
     },
   },
