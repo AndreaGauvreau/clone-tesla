@@ -39,7 +39,12 @@ export default function SliderConfig({listImage, setSliderIndex, state}) {
             opacity={state?.sliderindex === e?.id ? 1 : 0}
             transition={'0.3s'}
           >
-            <Image src={e?.image} fill objectFit="contain" />
+            <Image
+              src={e?.image}
+              fill
+              objectFit="contain"
+              priority={state?.sliderindex === e?.id ? true : false}
+            />
           </Box>
         )
       })}
