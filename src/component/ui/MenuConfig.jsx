@@ -22,8 +22,8 @@ export default function MenuConfig() {
         position={'fixed'}
         w={'100vw'}
         zIndex={99}
+        backgroundColor={'#ffffff90'}
         backdropFilter={'blur(10px)'}
-        bg={'#fffffff90'}
         flexDirection="row"
         px={{base: 5, xl: 20}}
         justifyContent={'space-between'}

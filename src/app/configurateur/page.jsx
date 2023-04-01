@@ -4,9 +4,9 @@ import Configurateur from '../../component/configurateur/Configurateur'
 
 const initialState = {
   selectedCar: 0,
-  selectedColor: 1,
+  selectedColor: 0,
   selectedWheels: 0,
-  selectedInterColor: null,
+  selectedInterColor: 1,
   crochet: false,
   autopilot: false,
   autonome: false,
@@ -114,13 +114,32 @@ export default function page() {
       pricevalue: 59990,
     },
   ]
+  const modelRoute =
+    state?.selectedCar === 2 ? 'model-y-performance' : 'model-y-basic'
+  const colorRoute = colorsCar[state.selectedColor].color
 
   const listImage = [
-    {id: 0, image: '/images/configurateur/back.jpeg'},
-    {id: 1, image: '/images/configurateur/front.jpeg'},
-    {id: 2, image: '/images/configurateur/side.jpeg'},
-    {id: 3, image: '/images/configurateur/wheel.jpeg'},
+    {
+      id: 0,
+      image: `/images/configurateur/${modelRoute}/${colorRoute}/back.jpeg`,
+    },
+    {
+      id: 1,
+      image: `/images/configurateur/${modelRoute}/${colorRoute}/front.jpeg`,
+    },
+    {
+      id: 2,
+      image: `/images/configurateur/${modelRoute}/${colorRoute}/side.jpeg`,
+    },
+    {
+      id: 3,
+      image: `/images/configurateur/${modelRoute}/${colorRoute}/wheel.jpeg`,
+    },
+    {id: 4, image: `/images/configurateur/interieur-blanc.jpeg`},
   ]
+  useEffect(() => {
+    console.log(listImage, state)
+  }, [listImage, state])
   useEffect(() => {
     const newPrice = calculateTotalPrice()
     dispatch({type: 'SET_PRICE', payload: newPrice})
