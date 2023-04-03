@@ -1,7 +1,7 @@
 import {ArrowBackIcon, ArrowForwardIcon} from '@chakra-ui/icons'
 import {Box, IconButton} from '@chakra-ui/react'
 import Image from 'next/image'
-import React from 'react'
+import React, {useState} from 'react'
 
 export default function SliderConfig({listImage, setSliderIndex, state}) {
   const incrementSliderIndex = () => {

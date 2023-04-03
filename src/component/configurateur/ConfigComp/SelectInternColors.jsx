@@ -2,24 +2,23 @@ import {Box, Flex, Text} from '@chakra-ui/react'
 import Image from 'next/image'
 import React from 'react'
 import {colors} from '../../ui/color'
-import {colorsCar} from '../../helpers/constantes'
-
-export default function SelectColors({setSelectedColor, state}) {
+import {colorsInternCar} from '../../helpers/constantes'
+export default function SelectInternColors({setSelectedInternColor, state}) {
   return (
     <>
       <Flex flexDirection={'row'} gap={2}>
-        {colorsCar?.map((e, index) => (
+        {colorsInternCar?.map((e, index) => (
           <Box
             cursor={'pointer'}
             border={'3px solid white'}
             boxShadow={
-              state?.selectedColor === index
+              state?.selectedInterColor === index
                 ? `0 0 0 3px ${colors.blue}`
                 : `0 0 0 0px ${colors.blue}`
             }
             transition={'0.5s'}
             borderRadius={'50%'}
-            onClick={() => setSelectedColor(index)}
+            onClick={() => setSelectedInternColor(index)}
           >
             <Image src={e.image} width={40} height={40} />
           </Box>
@@ -33,14 +32,14 @@ export default function SelectColors({setSelectedColor, state}) {
         h={'auto'}
       >
         <Text variant={'menuLink'}>
-          {colorsCar[state?.selectedColor]?.name}
+          {colorsInternCar[state?.selectedInterColor]?.name}
         </Text>
         <Text variant={'lightSubtile'} mt={1}>
-          {colorsCar[state?.selectedColor]?.prix}
+          {colorsInternCar[state?.selectedInterColor]?.prix}
         </Text>
       </Flex>
       <Text textAlign={'center'} variant={'tinyFont'}>
-        {colorsCar[state?.selectedColor]?.description}
+        {colorsInternCar[state?.selectedInterColor]?.description}
       </Text>
     </>
   )

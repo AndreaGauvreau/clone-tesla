@@ -3,27 +3,41 @@ import Link from 'next/link'
 import React, {useRef, useState} from 'react'
 import {useMotionValueEvent, useScroll} from 'framer-motion'
 import Image from 'next/image'
+import {useEffect} from 'react'
 
 export default function MainSection({pageInfos, index}) {
   const [opacity, setOpacity] = useState(0)
-  const [isdelete, setisDelete] = useState(false)
+  const [indexs, setIndexs] = useState(0)
+  const [increase, setIncrease] = useState(true)
+
   const boxref = useRef()
   const {scrollYProgress} = useScroll({
     target: boxref,
     offset: ['-50vh', '50vh'],
   })
   useMotionValueEvent(scrollYProgress, 'change', e => {
-    console.log(pageInfos?.title, e)
-    if (e < 0.7) {
-      setOpacity(0 + e * 3)
+    if (e === undefined || e === null) {
+      setIncrease(e)
+      setIndexs(0)
+    } else if (e > 0.95) {
+      setIncrease(e)
+      setIndexs(0)
     } else if (e > 0.7) {
       setOpacity(1 - e)
-    } else if (e === 1) {
-      setisDelete(true)
-    } else if (e === 0) {
-      setisDelete(false)
+      setIncrease(e)
+      setIndexs(0)
+    } else if (e < 0.25) {
+      setIndexs(0)
+      setIncrease(e)
+    } else if (e < 0.7) {
+      setOpacity(0 + e * 3)
+      setIndexs(20)
+      setIncrease(e)
     }
   })
+  useEffect(() => {
+    console.log(pageInfos?.title, indexs, increase)
+  }, [indexs])
   return (
     <>
       <Flex
@@ -33,14 +47,16 @@ export default function MainSection({pageInfos, index}) {
         flexDirection="column"
         justifyContent={'space-between'}
         alignItems="center"
-        h={'80vh'}
-        zIndex={2 + index}
+        h={{base: '60svh', md: '80vh'}}
+        zIndex={indexs}
+        w={'100vw'}
       >
         <Flex
           flexDirection="column"
           opacity={opacity}
           alignItems="center"
           gap={0}
+          zIndex={indexs}
         >
           <Heading variant={'headModel'} textAlign="center">
             {pageInfos?.title}
@@ -92,7 +108,7 @@ export default function MainSection({pageInfos, index}) {
       </Flex>
       <Flex
         w={'100%'}
-        minH={'100vh'}
+        minH={{base: '80svh', md: '100vh'}}
         justifyContent="space-between"
         alignItems={'center'}
         flexDirection="column"
@@ -105,7 +121,7 @@ export default function MainSection({pageInfos, index}) {
           position={'relative'}
           pt={'15%'}
           pb={'20px'}
-          display={isdelete ? 'none' : 'flex'}
+          zIndex={10}
         >
           {index === 0 ? (
             <Image

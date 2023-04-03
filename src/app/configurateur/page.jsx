@@ -1,12 +1,13 @@
 'use client'
-import React, {useEffect, useReducer, useState} from 'react'
+import React, {useEffect, useReducer} from 'react'
 import Configurateur from '../../component/configurateur/Configurateur'
+import {imagesRoutes, colorsCar} from '../../component/helpers/constantes'
 
 const initialState = {
   selectedCar: 0,
   selectedColor: 0,
   selectedWheels: 0,
-  selectedInterColor: 1,
+  selectedInterColor: 0,
   crochet: false,
   autopilot: false,
   autonome: false,
@@ -35,55 +36,6 @@ function carConfigReducer(state, action) {
 }
 export default function page() {
   const [state, dispatch] = useReducer(carConfigReducer, initialState)
-
-  const colorsCar = [
-    {
-      color: 'white',
-      image: '/images/configurateur/Paint_White.avif',
-      prix: 'De série',
-      name: 'Blanc Nacré Multicouches',
-      description: '',
-    },
-    {
-      color: 'black',
-      image: '/images/configurateur/Paint_Black.avif',
-      prix: 'De série',
-      name: 'Noir Uni',
-      description: '',
-    },
-    {
-      color: 'grey',
-      image: '/images/configurateur/Paint_MidnightSilver.avif',
-      prix: '3 000 €',
-      name: 'Quicksilver',
-      description:
-        'Développées à la Gigafactory de Berlin. Uniquement disponibles en Europe et au Moyen-Orient.',
-    },
-    {
-      color: 'blue',
-      image: '/images/configurateur/Paint_Blue.avif',
-      prix: '1 600 €',
-      name: 'Bleu Outremer Métallisé',
-      description: '',
-    },
-    {
-      color: 'red',
-      image: '/images/configurateur/Paint_Red.avif',
-      prix: '3 200 €',
-      name: 'Midnight Cherry Red',
-      description:
-        'Développées à la Gigafactory de Berlin. Uniquement disponibles en Europe et au Moyen-Orient.',
-    },
-  ]
-  const wheelscar = [
-    {
-      id: 1,
-      name: 'Jantes Überturbine 21"',
-      prix: 'De série',
-      description: 'Autonomie certifiée (WLTP) : 514 km',
-      image: '/images/configurateur/wheel.avif',
-    },
-  ]
 
   const model3 = [
     {
@@ -118,25 +70,12 @@ export default function page() {
     state?.selectedCar === 2 ? 'model-y-performance' : 'model-y-basic'
   const colorRoute = colorsCar[state.selectedColor].color
 
-  const listImage = [
-    {
-      id: 0,
-      image: `/images/configurateur/${modelRoute}/${colorRoute}/back.jpeg`,
-    },
-    {
-      id: 1,
-      image: `/images/configurateur/${modelRoute}/${colorRoute}/front.jpeg`,
-    },
-    {
-      id: 2,
-      image: `/images/configurateur/${modelRoute}/${colorRoute}/side.jpeg`,
-    },
-    {
-      id: 3,
-      image: `/images/configurateur/${modelRoute}/${colorRoute}/wheel.jpeg`,
-    },
-    {id: 4, image: `/images/configurateur/interieur-blanc.jpeg`},
-  ]
+  const listImage = imagesRoutes(
+    modelRoute,
+    colorRoute,
+    state?.selectedInterColor === 1 ? 'blanc' : 'noir',
+  )
+
   useEffect(() => {
     console.log(listImage, state)
   }, [listImage, state])
@@ -192,7 +131,6 @@ export default function page() {
       car={car}
       model3={model3}
       state={state}
-      colorsCar={colorsCar}
       setSelectedCar={car => dispatch({type: 'SET_SELECTED_CAR', payload: car})}
       setSelectedColor={color =>
         dispatch({type: 'SET_SELECTED_COLOR', payload: color})
@@ -206,7 +144,6 @@ export default function page() {
       setSliderIndex={index =>
         dispatch({type: 'SET_SELECTED_SLIDER_INDEX', payload: index})
       }
-      wheelscar={wheelscar}
       listImage={listImage}
     />
   )

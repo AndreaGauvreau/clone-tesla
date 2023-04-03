@@ -7,6 +7,7 @@ import PerformanceDetail from './ConfigComp/PerformanceDetail'
 import RecapConfig from './ConfigComp/RecapConfig'
 import SelectColors from './ConfigComp/SelectColors'
 import SelectedWheels from './ConfigComp/SelectedWheels'
+import SelectInternColors from './ConfigComp/SelectInternColors'
 import SliderConfig from './ConfigComp/SliderConfig'
 
 export default function Configurateur({
@@ -14,13 +15,12 @@ export default function Configurateur({
   setSelectedCar,
   model3,
   selectedCar,
-  colorsCar,
   selectedColor,
   state,
   setSelectedColor,
-  wheelscar,
   listImage,
   setSliderIndex,
+  setSelectedInternColor,
 }) {
   const SelectCar = ({carNb}) => {
     return (
@@ -183,7 +183,6 @@ export default function Configurateur({
           >
             <Heading variant={'headModelsub'}>Couleur</Heading>
             <SelectColors
-              colorsCar={colorsCar}
               selectedCar={selectedCar}
               setSelectedColor={setSelectedColor}
               selectedColor={selectedColor}
@@ -198,9 +197,22 @@ export default function Configurateur({
           >
             <Heading variant={'headModelsub'}>Jantes</Heading>
             <SelectedWheels
-              wheelscar={wheelscar}
               selectedCar={selectedCar}
               setSelectedColor={setSelectedColor}
+              selectedColor={selectedColor}
+              state={state}
+            />
+          </Flex>
+          <Flex
+            flexDirection={'column'}
+            alignItems="center"
+            gap={5}
+            my={'50px'}
+          >
+            <Heading variant={'headModelsub'}>Intérieur</Heading>
+            <SelectInternColors
+              selectedCar={selectedCar}
+              setSelectedInternColor={setSelectedInternColor}
               selectedColor={selectedColor}
               state={state}
             />

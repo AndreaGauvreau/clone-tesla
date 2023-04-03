@@ -2,8 +2,9 @@ import {Box, Flex, Text} from '@chakra-ui/react'
 import Image from 'next/image'
 import React from 'react'
 import {colors} from '../../ui/color'
+import {wheelscar} from '../../helpers/constantes'
 
-export default function SelectedWheels({wheelscar, setSelectedColor, state}) {
+export default function SelectedWheels({setSelectedColor, state}) {
   return (
     <>
       <Flex flexDirection={'row'} gap={2}>

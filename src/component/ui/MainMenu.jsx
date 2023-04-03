@@ -184,7 +184,7 @@ export default function MainMenu() {
           bg={'#00000010'}
           backdropFilter={'blur(6px)'}
           px={4}
-          py={1}
+          py={2}
           variant={'menuLink'}
         >
           Menu
