@@ -12,6 +12,7 @@ export default function RecapConfig({state}) {
       flexDirection="row"
       alignItems={'center'}
       bg={'#00000020'}
+      display={{base: 'none', lg: 'flex'}}
       p={4}
       borderRadius={'20px 20px 0px 0px '}
       justifyContent="space-around"

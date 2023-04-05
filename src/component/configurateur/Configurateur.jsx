@@ -70,13 +70,13 @@ export default function Configurateur({
       <Flex
         flexDirection={{base: 'column', lg: 'row'}}
         w={'100vw'}
-        maxH={{base: 'none', lg: '100vh'}}
+        maxH={{base: '100vh', lg: '100vh'}}
         minH={'100vh'}
-        overflowY={{base: 'scroll', lg: 'hidden'}}
+        overflowY={{base: 'hidden'}}
       >
         <Flex
           w={{base: '100%', lg: 'full'}}
-          h={'100vh'}
+          h={{base: '35vh', md: '100vh'}}
           objectFit="cover"
           position={'relative'}
         >
@@ -130,14 +130,15 @@ export default function Configurateur({
         </Flex>
         <Flex
           w={{base: '100%', lg: '600px'}}
-          h={'100vh'}
+          h={{base: '65vh', md: '100vh'}}
           overflowY={{base: 'auto', lg: 'scroll'}}
           p={5}
           px={10}
+          pb={{base: '100px'}}
           flexDirection={'column'}
           alignItems="center"
           gap={'60px'}
-          pt={'100px'}
+          pt={{base: '30px', md: '100px'}}
         >
           <Flex boxShadow={'lg'} h={'auto'} p={3}>
             <WarningIcon pt={2} boxSize={7} color={'#3E6AE1'} />
