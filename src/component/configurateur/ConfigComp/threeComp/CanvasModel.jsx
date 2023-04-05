@@ -55,6 +55,8 @@ export default function CanvasModel({state, setProgress, lightOn}) {
           maxPolarAngle={1.45}
           makeDefault
           enableZoom={true}
+          minDistance={1} // définir une valeur plus petite pour le zoom minimum
+          maxDistance={2}
         />
       </Canvas>
     </>
