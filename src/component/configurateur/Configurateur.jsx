@@ -1,6 +1,14 @@
-import {WarningIcon} from '@chakra-ui/icons'
-import {Box, Button, Flex, Heading, Text} from '@chakra-ui/react'
-import React from 'react'
+import {RepeatIcon, WarningIcon} from '@chakra-ui/icons'
+import {
+  Box,
+  Button,
+  Flex,
+  Heading,
+  IconButton,
+  Skeleton,
+  Text,
+} from '@chakra-ui/react'
+import React, {Suspense, useState} from 'react'
 import {colors} from '../ui/color'
 import MenuConfig from '../ui/MenuConfig'
 import PerformanceDetail from './ConfigComp/PerformanceDetail'
@@ -9,6 +17,14 @@ import SelectColors from './ConfigComp/SelectColors'
 import SelectedWheels from './ConfigComp/SelectedWheels'
 import SelectInternColors from './ConfigComp/SelectInternColors'
 import SliderConfig from './ConfigComp/SliderConfig'
+import dynamic from 'next/dynamic'
+
+const CanvasModel = dynamic(
+  () => import('./ConfigComp/threeComp/CanvasModel'),
+  {
+    ssr: false,
+  },
+)
 
 export default function Configurateur({
   car,
@@ -22,6 +38,7 @@ export default function Configurateur({
   setSliderIndex,
   setSelectedInternColor,
 }) {
+  const [threeSelect, setThreeSelect] = useState(false)
   const SelectCar = ({carNb}) => {
     return (
       <Flex
@@ -62,12 +79,37 @@ export default function Configurateur({
           objectFit="cover"
           position={'relative'}
         >
-          <RecapConfig state={state} />
-          <SliderConfig
-            listImage={listImage}
-            setSliderIndex={setSliderIndex}
-            state={state}
+          <IconButton
+            position={'absolute'}
+            top={20}
+            right={20}
+            zIndex={20}
+            icon={<RepeatIcon />}
+            onClick={() => setThreeSelect(!threeSelect)}
           />
+          <RecapConfig state={state} />
+          {threeSelect ? (
+            <Suspense
+              fallback={
+                <Skeleton
+                  w={50}
+                  h={50}
+                  zIndex={20}
+                  position="absolute"
+                  top={'50%'}
+                  left={'50%'}
+                />
+              }
+            >
+              <CanvasModel state={state} />
+            </Suspense>
+          ) : (
+            <SliderConfig
+              listImage={listImage}
+              setSliderIndex={setSliderIndex}
+              state={state}
+            />
+          )}
         </Flex>
         <Flex
           w={{base: '100%', lg: '600px'}}
