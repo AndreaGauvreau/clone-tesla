@@ -37,6 +37,7 @@ export default function Configurateur({
   listImage,
   setSliderIndex,
   setSelectedInternColor,
+  setProgress,
 }) {
   const [threeSelect, setThreeSelect] = useState(false)
   const SelectCar = ({carNb}) => {
@@ -89,20 +90,36 @@ export default function Configurateur({
           />
           <RecapConfig state={state} />
           {threeSelect ? (
-            <Suspense
-              fallback={
-                <Skeleton
-                  w={50}
-                  h={50}
-                  zIndex={20}
-                  position="absolute"
+            <>
+              {state?.progressModel === 100 ? (
+                ''
+              ) : (
+                <Box
+                  position={'aboslute'}
                   top={'50%'}
                   left={'50%'}
-                />
-              }
-            >
-              <CanvasModel state={state} />
-            </Suspense>
+                  transform={'translate(-50%,-50%'}
+                  color={'black'}
+                  zIndex={99999}
+                >
+                  <Heading>{state?.progressModel}</Heading>
+                </Box>
+              )}
+              <Suspense
+                fallback={
+                  <Skeleton
+                    w={50}
+                    h={50}
+                    zIndex={20}
+                    position="absolute"
+                    top={'50%'}
+                    left={'50%'}
+                  />
+                }
+              >
+                <CanvasModel setProgress={setProgress} state={state} />
+              </Suspense>
+            </>
           ) : (
             <SliderConfig
               listImage={listImage}

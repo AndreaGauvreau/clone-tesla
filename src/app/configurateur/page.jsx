@@ -14,6 +14,7 @@ const initialState = {
   recharge: false,
   sliderindex: 0,
   price: 0,
+  progressModel: 0,
 }
 
 function carConfigReducer(state, action) {
@@ -30,6 +31,8 @@ function carConfigReducer(state, action) {
       return {...state, sliderindex: action.payload}
     case 'SET_PRICE':
       return {...state, price: action.payload}
+    case 'SET_PROGRESS':
+      return {...state, progressModel: action.payload}
     default:
       return state
   }
@@ -76,9 +79,7 @@ export default function page() {
     state?.selectedInterColor === 1 ? 'blanc' : 'noir',
   )
 
-  useEffect(() => {
-    console.log(listImage, state)
-  }, [listImage, state])
+  useEffect(() => {}, [listImage, state])
   useEffect(() => {
     const newPrice = calculateTotalPrice()
     dispatch({type: 'SET_PRICE', payload: newPrice})
@@ -143,6 +144,9 @@ export default function page() {
       }
       setSliderIndex={index =>
         dispatch({type: 'SET_SELECTED_SLIDER_INDEX', payload: index})
+      }
+      setProgress={progress =>
+        dispatch({type: 'SET_PROGRESS', payload: progress})
       }
       listImage={listImage}
     />

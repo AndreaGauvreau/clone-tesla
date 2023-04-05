@@ -1,12 +1,15 @@
 import {Progress} from '@chakra-ui/react'
 import {OrbitControls, Stage, useProgress} from '@react-three/drei'
 import {Canvas} from '@react-three/fiber'
-import React from 'react'
+import React, {useEffect} from 'react'
 import {Model} from './Model'
 
-export default function CanvasModel({state}) {
-  const {progress} = useProgress()
-
+export default function CanvasModel({state, setProgress}) {
+  const {progress, errors, active, item, loaded, total} = useProgress()
+  useEffect(() => {
+    setProgress(progress)
+    console.log('progress', progress, total, loaded, item, active)
+  }, [progress, total, loaded, item, active])
   return (
     <>
       <Canvas shadows camera={{position: [4, -1, 8], fov: 35}}>
