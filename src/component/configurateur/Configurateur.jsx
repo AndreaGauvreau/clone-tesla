@@ -1,4 +1,4 @@
-import {RepeatIcon, WarningIcon} from '@chakra-ui/icons'
+import {MoonIcon, RepeatIcon, SunIcon, WarningIcon} from '@chakra-ui/icons'
 import {
   Box,
   Button,
@@ -40,6 +40,7 @@ export default function Configurateur({
   setProgress,
 }) {
   const [threeSelect, setThreeSelect] = useState(false)
+  const [lightOn, setLightOn] = useState(true)
   const SelectCar = ({carNb}) => {
     return (
       <Flex
@@ -83,7 +84,7 @@ export default function Configurateur({
           <IconButton
             position={'absolute'}
             top={20}
-            right={20}
+            right={'50px'}
             zIndex={20}
             icon={<RepeatIcon />}
             onClick={() => setThreeSelect(!threeSelect)}
@@ -102,23 +103,22 @@ export default function Configurateur({
                   color={'black'}
                   zIndex={99999}
                 >
+                  <IconButton
+                    position={'absolute'}
+                    top={20}
+                    right={'100px'}
+                    zIndex={20}
+                    icon={lightOn ? <MoonIcon /> : <SunIcon />}
+                    onClick={() => setLightOn(!lightOn)}
+                  />
                   <Heading>{state?.progressModel}</Heading>
                 </Box>
               )}
-              <Suspense
-                fallback={
-                  <Skeleton
-                    w={50}
-                    h={50}
-                    zIndex={20}
-                    position="absolute"
-                    top={'50%'}
-                    left={'50%'}
-                  />
-                }
-              >
-                <CanvasModel setProgress={setProgress} state={state} />
-              </Suspense>
+              <CanvasModel
+                setProgress={setProgress}
+                state={state}
+                lightOn={lightOn}
+              />
             </>
           ) : (
             <SliderConfig

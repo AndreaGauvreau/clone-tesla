@@ -16,6 +16,7 @@ export const colorsInternCar = [
 ]
 export const colorsCar = [
   {
+    hex: '#ffffff',
     color: 'white',
     image: '/images/configurateur/Paint_White.avif',
     prix: 'De série',
@@ -23,6 +24,7 @@ export const colorsCar = [
     description: '',
   },
   {
+    hex: '#000000',
     color: 'black',
     image: '/images/configurateur/Paint_Black.avif',
     prix: 'De série',
@@ -30,6 +32,7 @@ export const colorsCar = [
     description: '',
   },
   {
+    hex: 'lightgrey',
     color: 'grey',
     image: '/images/configurateur/Paint_MidnightSilver.avif',
     prix: '3 000 €',
@@ -38,6 +41,7 @@ export const colorsCar = [
       'Développées à la Gigafactory de Berlin. Uniquement disponibles en Europe et au Moyen-Orient.',
   },
   {
+    hex: 'royalblue',
     color: 'blue',
     image: '/images/configurateur/Paint_Blue.avif',
     prix: '1 600 €',
@@ -45,6 +49,7 @@ export const colorsCar = [
     description: '',
   },
   {
+    hex: 'red',
     color: 'red',
     image: '/images/configurateur/Paint_Red.avif',
     prix: '3 200 €',

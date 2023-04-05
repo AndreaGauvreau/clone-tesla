@@ -5,12 +5,40 @@ import * as THREE from 'three'
 
 import React, {useEffect, useRef} from 'react'
 import {useGLTF, useProgress} from '@react-three/drei'
-import {colorsCar} from '@/component/helpers/constantes'
+import {colorsCar, colorsInternCar} from '@/component/helpers/constantes'
 
-export function Model({state}) {
+export default function Model({state, lightOn}) {
+  const isMetalness = colorsCar[state?.selectedColor].color === 'white'
   const {nodes, materials} = useGLTF('/model/teslamodelyblend2.glb')
+  const carMaterial = new THREE.MeshPhysicalMaterial({
+    color: colorsCar[state?.selectedColor].hex,
+    metalness: isMetalness ? 0.2 : 0.7,
+    roughness: 0.1,
+    clearcoat: 1,
+    clearcoatRoughness: 0,
+    transmission: 0,
+    reflectivity: 0.8,
+    refractionRatio: 0.9,
+    envMapIntensity: 0.5,
+    side: THREE.FrontSide,
+  })
+
+  const carEmissiveWhite = new THREE.MeshPhysicalMaterial({
+    emissive: 'white',
+    emissiveIntensity: lightOn ? 10 : 0,
+    toneMapped: false,
+  })
+  const carEmissiveRed = new THREE.MeshPhysicalMaterial({
+    emissive: 'tomato',
+    emissiveIntensity: lightOn ? 8 : 1,
+    toneMapped: false,
+  })
+
+  const carWhiteColor = new THREE.MeshPhysicalMaterial({
+    color: colorsInternCar[state?.selectedInterColor].color,
+  })
   return (
-    <group dispose={null}>
+    <group>
       <mesh
         castShadow
         receiveShadow
@@ -199,26 +227,8 @@ export function Model({state}) {
         castShadow
         receiveShadow
         geometry={nodes['40'].geometry}
-        material={materials.glass_lights}
-      >
-        {' '}
-        <meshPhysicalMaterial
-          attach="material"
-          color={0xffffff}
-          metalness={0}
-          roughness={0}
-          clearcoat={1}
-          clearcoatRoughness={0}
-          transmission={0.95} // Augmentez cette valeur pour une meilleure transparence
-          reflectivity={1}
-          refractionRatio={0.98}
-          envMapIntensity={2}
-          side={THREE.FrontSide}
-          depthWrite={false}
-          transparent
-          opacity={0.2}
-        />
-      </mesh>
+        material={carEmissiveRed}
+      />
       <mesh
         castShadow
         receiveShadow
@@ -237,22 +247,18 @@ export function Model({state}) {
         geometry={nodes.glass2.geometry}
         material={materials.glass_body}
       >
-        {' '}
         <meshPhysicalMaterial
           attach="material"
-          color={0xffffff}
+          color={0x000000}
           metalness={0}
           roughness={0}
           clearcoat={1}
           clearcoatRoughness={0}
-          transmission={0.95} // Augmentez cette valeur pour une meilleure transparence
-          reflectivity={1}
-          refractionRatio={0.98}
-          envMapIntensity={2}
+          transmission={0} // Augmentez cette valeur pour une meilleure transparence
+          reflectivity={0}
+          refractionRatio={0.1}
+          envMapIntensity={0.9}
           side={THREE.FrontSide}
-          depthWrite={false}
-          transparent
-          opacity={0.2}
         />
       </mesh>
       <mesh
@@ -349,17 +355,9 @@ export function Model({state}) {
         castShadow
         receiveShadow
         geometry={nodes.lightfront3.geometry}
-        material={materials.glass_lights}
-      >
-        <meshStandardMaterial
-          attach="material"
-          color={0xffffff}
-          emissive={0xffffff}
-          emissiveIntensity={10.5}
-          roughness={1}
-          metalness={0}
-        />
-      </mesh>
+        material={carEmissiveWhite}
+      />
+
       <mesh
         castShadow
         receiveShadow
@@ -388,7 +386,7 @@ export function Model({state}) {
         castShadow
         receiveShadow
         geometry={nodes['43'].geometry}
-        material={materials.interior}
+        material={carWhiteColor}
       />
       <mesh
         castShadow
@@ -484,18 +482,9 @@ export function Model({state}) {
         castShadow
         receiveShadow
         geometry={nodes.lightfront.geometry}
-        material={materials.chrome}
-      >
-        {' '}
-        <meshStandardMaterial
-          attach="material"
-          color={0xffffff}
-          emissive={0xffffff}
-          emissiveIntensity={10.5}
-          roughness={1}
-          metalness={0}
-        />
-      </mesh>
+        material={carEmissiveWhite}
+      />
+
       <mesh
         castShadow
         receiveShadow
@@ -542,17 +531,8 @@ export function Model({state}) {
         castShadow
         receiveShadow
         geometry={nodes.lightBack.geometry}
-        material={materials.glass_lights}
-      >
-        <meshStandardMaterial
-          attach="material"
-          color={0xff0000}
-          emissive={0xff0000}
-          emissiveIntensity={10.5}
-          roughness={1}
-          metalness={0}
-        />
-      </mesh>
+        material={carEmissiveRed}
+      />
       <mesh
         castShadow
         receiveShadow
@@ -575,10 +555,8 @@ export function Model({state}) {
         castShadow
         receiveShadow
         geometry={nodes.carrosserie_3.geometry}
-        material={materials.body}
-      >
-        <meshPhongMaterial color={colorsCar[state?.selectedColor].color} />
-      </mesh>
+        material={carMaterial}
+      />
       <mesh
         castShadow
         receiveShadow
@@ -660,7 +638,7 @@ export function Model({state}) {
         castShadow
         receiveShadow
         geometry={nodes.lightfront2.geometry}
-        material={materials.alum}
+        material={carEmissiveWhite}
       />
       <mesh
         castShadow
@@ -761,10 +739,8 @@ export function Model({state}) {
         castShadow
         receiveShadow
         geometry={nodes.carrosserie2.geometry}
-        material={materials.body}
-      >
-        <meshPhongMaterial color={colorsCar[state?.selectedColor].color} />
-      </mesh>
+        material={carMaterial}
+      />
       <mesh
         castShadow
         receiveShadow
@@ -823,10 +799,8 @@ export function Model({state}) {
         castShadow
         receiveShadow
         geometry={nodes.carrosserie.geometry}
-        material={materials.body}
-      >
-        <meshPhongMaterial color={colorsCar[state?.selectedColor].color} />
-      </mesh>
+        material={carMaterial}
+      />
       <mesh
         castShadow
         receiveShadow
