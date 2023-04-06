@@ -16,7 +16,7 @@ import Link from 'next/link'
 import React, {useEffect, useRef} from 'react'
 import './Mainmenu.css'
 
-export default function MainMenu() {
+export default function MainMenu({position = 'fixed'}) {
   const {isOpen, onOpen, onClose} = useDisclosure()
   const overlayRef = useRef(null)
   const elementsRef = useRef([])
@@ -61,11 +61,11 @@ export default function MainMenu() {
         bg={'#00000010'}
         className="overlay"
         ref={overlayRef}
-        position="fixed"
+        position={position}
         zIndex={80}
       />
       <Flex
-        position={'fixed'}
+        position={position}
         w={'100vw'}
         zIndex={99}
         flexDirection="row"
@@ -84,7 +84,7 @@ export default function MainMenu() {
           w={'50%'}
           display={{base: 'none', xl: 'flex'}}
         >
-          <Link href={'/configurateur'}>
+          <Link href={'/models'}>
             <Text
               variant={'menuLink'}
               className="hoveredLink"
@@ -93,7 +93,7 @@ export default function MainMenu() {
               Model S
             </Text>
           </Link>
-          <Link href={'/configurateur'}>
+          <Link href={'/model3'}>
             <Text
               className="hoveredLink"
               variant={'menuLink'}
@@ -102,7 +102,7 @@ export default function MainMenu() {
               Model 3
             </Text>
           </Link>
-          <Link href={'/configurateur'}>
+          <Link href={'/modelx'}>
             <Text
               className="hoveredLink"
               variant={'menuLink'}
@@ -111,7 +111,7 @@ export default function MainMenu() {
               Model X
             </Text>
           </Link>
-          <Link href={'/configurateur'}>
+          <Link href={'/modely'}>
             <Text
               className="hoveredLink"
               variant={'menuLink'}

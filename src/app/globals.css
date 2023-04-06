@@ -17,3 +17,12 @@ body {
     scroll-snap-align: start !important;
   }
 }
+.heroGradient::after {
+  content: '';
+  position: absolute;
+  width: 100vw;
+  height: 30vh;
+  bottom: 0;
+  z-index: 0;
+  background: linear-gradient(0deg, black 0%, transparent 100%);
+}
