@@ -32,7 +32,12 @@ export default function HeaderSection({
       >
         <FadeInTop>
           <Flex flexDirection="column" alignItems="center" gap={0}>
-            <Heading variant={'headModel'} textAlign="center" mt={'20vh'}>
+            <Heading
+              variant={'headModel'}
+              textAlign="center"
+              mt={'20vh'}
+              as={'h1'}
+            >
               {model}
             </Heading>
             <Text>{subtitle ?? ''}</Text>

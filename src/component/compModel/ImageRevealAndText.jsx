@@ -24,7 +24,7 @@ export default function ImageRevealAndText({
       >
         <Box w={{base: '100%', md: '420px'}} px={10} py={{base: 10, md: 0}}>
           <FadeInTop>
-            <Heading as="h2" variant={'basicmedium'} mb={5}>
+            <Heading as="h3" variant={'basicmedium'} mb={5}>
               {title}
             </Heading>
             <Text variant={'basicmedium'}>{paragraph}</Text>

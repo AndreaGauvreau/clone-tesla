@@ -75,7 +75,12 @@ export default function MainMenu({position1 = 'fixed', position2 = 'fixed'}) {
       >
         <Flex justifyContent={'flex-start'} w={'25%'}>
           <Link href={'/'}>
-            <Image src="/images/logo-b.png" width={120} height={50} />
+            <Image
+              src="/images/logo-b.png"
+              width={120}
+              height={50}
+              alt={'logo-clone-tesla-andrea-gauvreau'}
+            />
           </Link>
         </Flex>
         <Flex
