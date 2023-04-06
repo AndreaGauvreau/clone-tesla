@@ -1,19 +1,37 @@
 import {Box, Flex, Heading, Image, Text} from '@chakra-ui/react'
-import {motion} from 'framer-motion'
-import React from 'react'
+import {motion, useAnimation} from 'framer-motion'
+import {useInView} from 'react-intersection-observer'
+
+import React, {useEffect} from 'react'
 
 const FadeInTop = ({children}) => {
+  const squareVariants = {
+    visible: {opacity: 1, y: 0},
+    hidden: {opacity: 0, y: 20},
+  }
+  const controls = useAnimation()
+  const [ref, inView] = useInView()
+  useEffect(() => {
+    if (inView) {
+      controls.start('visible')
+    } else {
+      controls.start('hidden')
+    }
+  }, [controls, inView])
   return (
     <motion.div
-      initial={{opacity: 0, y: 20}}
-      animate={{opacity: 1, y: 0}}
-      exit={{opacity: 0, y: -20}}
+      ref={ref}
+      animate={controls}
+      variants={squareVariants}
+      initial="hidden"
+      exit="hidden"
       transition={{duration: 0.4}}
     >
       {children}
     </motion.div>
   )
 }
+
 export default function ImageRevealAndText({
   title = 'titre',
   paragraph = 'paragraph',

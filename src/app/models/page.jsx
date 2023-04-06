@@ -27,6 +27,9 @@ export default function Page() {
         image={'/images/model-s.webp'}
       />
       <ImageRevealAndText />
+      <ImageRevealAndText />
+      <ImageRevealAndText />
+      <ImageRevealAndText />
     </>
   )
 }

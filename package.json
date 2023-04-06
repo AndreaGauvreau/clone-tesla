@@ -13,15 +13,16 @@
     "@chakra-ui/react": "^2.5.1",
     "@react-three/drei": "^9.58.5",
     "@react-three/fiber": "^8.12.0",
+    "@react-three/postprocessing": "^2.7.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^14.4.3",
-    "@react-three/postprocessing": "^2.7.1",
     "framer-motion": "^10.0.0",
     "next": "13.2.4",
     "postprocessing": "^6.30.2",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-intersection-observer": "^9.4.3"
   },
   "devDependencies": {
     "typescript": "5.0.3"
