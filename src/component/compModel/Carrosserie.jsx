@@ -45,6 +45,7 @@ export default function Carrosserie() {
             src={'/images/modelsPage/skelette.jpeg'}
             fill
             objectFit="cover"
+            alt={'image carrosserie tesla'}
           />
           <PointGrowth
             width={'550px'}

@@ -52,7 +52,12 @@ export default function PointInterets({
           borderRadius={'20px'}
           overflow={'hidden'}
         >
-          <Image src={imgSelected ? image : image2} fill objectFit="cover" />
+          <Image
+            src={imgSelected ? image : image2}
+            fill
+            objectFit="cover"
+            alt={'moteur tesla carrosserie'}
+          />
         </Box>
         <Flex
           flexDirection={{base: 'column', md: 'row'}}

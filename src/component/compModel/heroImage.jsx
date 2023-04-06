@@ -26,7 +26,13 @@ export default function HeroImage({
           position="relative"
           className="heroGradient2"
         >
-          <Image src={image} fill objectFit="cover" quality={100} />
+          <Image
+            src={image}
+            fill
+            objectFit="cover"
+            quality={100}
+            alt={'découvrez l interieur du futur'}
+          />
         </Box>
       </Flex>
     </>

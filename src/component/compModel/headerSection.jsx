@@ -20,7 +20,14 @@ export default function HeaderSection({
 
   return (
     <Box w={'100%'} h={{base: '90svh', md: '95vh'}} position="relative">
-      <Image src={image} fill objectFit="cover" quality={100} priority />
+      <Image
+        src={image}
+        fill
+        objectFit="cover"
+        quality={100}
+        priority
+        alt={`image de la tesla ${model}`}
+      />
       <Flex
         position={'absolute'}
         flexDirection="column"
