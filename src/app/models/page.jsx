@@ -50,7 +50,7 @@ export default function Page() {
   }
   return (
     <>
-      <MainMenu position1="relative" position2="absolute" />
+      <MainMenu position1="absolute" position2="absolute" />
       <HeaderSection
         subtitle="Plaid"
         model="Model S"
