@@ -1,67 +1,52 @@
-import {Box, Flex, Heading, Image, Text} from '@chakra-ui/react'
-import {motion, useAnimation} from 'framer-motion'
-import {useInView} from 'react-intersection-observer'
-
-import React, {useEffect} from 'react'
-
-const FadeInTop = ({children}) => {
-  const squareVariants = {
-    visible: {opacity: 1, y: 0},
-    hidden: {opacity: 0, y: 20},
-  }
-  const controls = useAnimation()
-  const [ref, inView] = useInView()
-  useEffect(() => {
-    if (inView) {
-      controls.start('visible')
-    } else {
-      controls.start('hidden')
-    }
-  }, [controls, inView])
-  return (
-    <motion.div
-      ref={ref}
-      animate={controls}
-      variants={squareVariants}
-      initial="hidden"
-      exit="hidden"
-      transition={{duration: 0.4}}
-    >
-      {children}
-    </motion.div>
-  )
-}
-
+import {Box, Flex, Heading, Text} from '@chakra-ui/react'
+import Image from 'next/image'
+import {FadeInTop} from './FaedinTop'
 export default function ImageRevealAndText({
   title = 'titre',
   paragraph = 'paragraph',
   image = '/images/model-s.webp',
+  inverse = false,
 }) {
   return (
     <Flex
-      direction={{base: 'column', md: 'row'}}
       align="center"
-      justify="space-between"
-      my={10}
+      justify="center"
+      minW={'100vw'}
+      h={'100%'}
+      bg={'black'}
     >
-      <FadeInTop>
-        <Box flex="1" pr={{base: 0, md: 10}}>
-          <Heading as="h2" size="lg" mb={5}>
-            {title}
-          </Heading>
-          <Text fontSize="lg">{paragraph}</Text>
+      <Flex
+        w={{base: '100%', md: '800px'}}
+        h={{base: '100%', md: '240px'}}
+        align="center"
+        justify="center"
+        direction={{
+          base: 'column-reverse',
+          md: inverse ? 'row-reverse' : 'row',
+        }}
+        gap={5}
+        color={'white'}
+      >
+        <Box w={{base: '100%', md: '420px'}} px={10} py={{base: 10, md: 0}}>
+          <FadeInTop>
+            <Heading as="h2" variant={'basicmedium'} mb={5}>
+              {title}
+            </Heading>
+            <Text variant={'basicmedium'}>{paragraph}</Text>
+          </FadeInTop>
         </Box>
-      </FadeInTop>
-      <FadeInTop>
-        <Box flex="1">
-          <Image
-            src={image}
-            objectFit="cover"
-            w="100%"
-            h={{base: 'auto', md: '100%'}}
-          />
+        <Box w={{base: '100%', md: '380px'}}>
+          <FadeInTop>
+            <Box
+              w={{base: '100%', md: '400px'}}
+              h={'240px'}
+              position={'relative'}
+            >
+              <Image src={image} objectFit="cover" fill />
+            </Box>
+          </FadeInTop>
         </Box>
-      </FadeInTop>
+      </Flex>
     </Flex>
   )
 }

@@ -70,12 +70,24 @@ const theme = extendTheme({
           fontWeight: '500',
           fontFamily: 'Gotham Book',
         },
+        basicmedium: {
+          fontSize: '14px',
+          lineHeight: '20px',
+          fontWeight: '600',
+          fontFamily: 'Gotham Book',
+        },
       },
     },
     Heading: {
       variants: {
         headModel: {fontSize: '40px', lineHeight: '30px'},
         headModelsub: {fontSize: '28px', lineHeight: '25px'},
+        basicmedium: {
+          fontSize: '14px',
+          lineHeight: '17px',
+          fontWeight: '900',
+          fontFamily: 'Gotham Medium',
+        },
       },
     },
     Button: {
