@@ -2,7 +2,7 @@
 import MainMenu from '@/component/ui/MainMenu'
 import React from 'react'
 import HeaderSection from '/src/component/compModel/headerSection.jsx'
-
+import ImageRevealAndText from '/src/component/compModel/imageRevealAndText'
 export default function Page() {
   const content = {
     branch1: {i1: '600', i2: 'km', i3: 'Autonomie', i4: '(WLTP)'},
@@ -26,6 +26,7 @@ export default function Page() {
         content={content}
         image={'/images/model-s.webp'}
       />
+      <ImageRevealAndText />
     </>
   )
 }

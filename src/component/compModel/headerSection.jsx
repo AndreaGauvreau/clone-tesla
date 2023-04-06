@@ -1,10 +1,9 @@
 'use client'
-import {Box, Button, Flex, Heading, Text} from '@chakra-ui/react'
+import {Box, Flex, Heading, Text} from '@chakra-ui/react'
 import Image from 'next/image'
-import Link from 'next/link'
 import React from 'react'
 import Information from './information'
-import CtaBtn from './CtaBtn'
+import CtaBtn from './ctaBtn'
 
 export default function HeaderSection({
   image = '/images/model-s.webp',
