@@ -19,7 +19,7 @@ export default function HeaderSection({
   const {text: ctaText, link: ctaLink} = content.cta || {}
 
   return (
-    <Box w={'100vw'} h={{base: '90svh', md: '95vh'}} position="relative">
+    <Box w={'100%'} h={{base: '90svh', md: '95vh'}} position="relative">
       <Image src={image} fill objectFit="cover" quality={100} priority />
       <Flex
         position={'absolute'}
@@ -27,7 +27,7 @@ export default function HeaderSection({
         justifyContent={'space-between'}
         alignItems="center"
         h={'100%'}
-        w={'100vw'}
+        w={'100%'}
         className="heroGradient"
       >
         <FadeInTop>

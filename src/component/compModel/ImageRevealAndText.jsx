@@ -8,13 +8,7 @@ export default function ImageRevealAndText({
   inverse = false,
 }) {
   return (
-    <Flex
-      align="center"
-      justify="center"
-      minW={'100vw'}
-      h={'100%'}
-      bg={'black'}
-    >
+    <Flex align="center" justify="center" minW={'100%'} h={'100%'} bg={'black'}>
       <Flex
         w={{base: '100%', md: '800px'}}
         h={{base: '100%', md: '240px'}}

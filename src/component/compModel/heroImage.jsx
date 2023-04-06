@@ -12,7 +12,7 @@ export default function HeroImage({
         justifyContent={'center'}
         alignItems="center"
         h={'200px'}
-        w={'100vw'}
+        w={'100%'}
         bg={'black'}
       >
         <Heading variant={'headModel'} color="white" textAlign="center">
@@ -21,7 +21,7 @@ export default function HeroImage({
       </Flex>
       <Flex position={'relative'} h={{base: '90svh', md: '90vh'}}>
         <Box
-          w={'100vw'}
+          w={'100%'}
           h={{base: '90svh', md: '90vh'}}
           position="relative"
           className="heroGradient2"

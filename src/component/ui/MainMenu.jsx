@@ -74,9 +74,9 @@ export default function MainMenu({position = 'fixed'}) {
         py={5}
       >
         <Flex justifyContent={'flex-start'} w={'25%'}>
-          <Box>
+          <Link href={'/'}>
             <Image src="/images/logo-b.png" width={120} height={50} />
-          </Box>
+          </Link>
         </Flex>
         <Flex
           gap={8}
