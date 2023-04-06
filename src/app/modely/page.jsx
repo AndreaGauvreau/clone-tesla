@@ -14,13 +14,17 @@ export default function Page() {
       i3: '‡Puissance du véhicule',
       mobile: false,
     },
-    cta: {text: 'Commander', link: '/commander'},
+    cta: {text: 'Commander', link: '/'},
   }
 
   return (
     <>
       <MainMenu />
-      <HeaderSection model="Model Y" content={content} />
+      <HeaderSection
+        model="Model Y"
+        content={content}
+        image={'/images/model-y.webp'}
+      />
     </>
   )
 }
