@@ -5,6 +5,7 @@ import HeaderSection from '/src/component/compModel/headerSection.jsx'
 import ImageRevealAndText from '/src/component/compModel/ImageRevealAndText'
 import VideoTabs from '/src/component/compModel/videoTabs'
 import HeroImage from '/src/component/compModel/heroImage'
+import PointInterets from '/src/component/compModel/PointInterets'
 import {Flex} from '@chakra-ui/react'
 export default function Page() {
   const content = {
@@ -113,7 +114,8 @@ export default function Page() {
           }
           inverse={true}
           image={'/images/modelsPage/roue.webp'}
-        />{' '}
+        />
+        <PointInterets />
       </Flex>
     </>
   )

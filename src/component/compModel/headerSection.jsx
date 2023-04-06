@@ -58,7 +58,14 @@ export default function HeaderSection({
             <Information i1={i1a} i2={i2a} i3={i3a} i4={i4a} delay={0} />
             <Information i1={i1b} i2={i2b} i3={i3b} i4={i4b} delay={0.1} />
             <Information i1={i1c} i2={i2c} i3={i3c} i4={i4c} delay={0.2} />
-            <Information i1={i1d} i2={i2d} i3={i3d} i4={i4d} delay={0.3} />
+            <Information
+              i1={i1d}
+              i2={i2d}
+              i3={i3d}
+              i4={i4d}
+              delay={0.3}
+              mobile={false}
+            />
             <CtaBtn texte={ctaText} lien={ctaLink} />
           </Flex>
         </Flex>
