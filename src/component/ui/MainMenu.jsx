@@ -16,7 +16,7 @@ import Link from 'next/link'
 import React, {useEffect, useRef} from 'react'
 import './Mainmenu.css'
 
-export default function MainMenu({position = 'fixed'}) {
+export default function MainMenu({position1 = 'fixed', position2 = 'fixed'}) {
   const {isOpen, onOpen, onClose} = useDisclosure()
   const overlayRef = useRef(null)
   const elementsRef = useRef([])
@@ -61,12 +61,12 @@ export default function MainMenu({position = 'fixed'}) {
         bg={'#00000010'}
         className="overlay"
         ref={overlayRef}
-        position={position}
+        position={position1}
         zIndex={80}
       />
       <Flex
-        position={position}
-        w={'100vw'}
+        position={position2}
+        w={'100%'}
         zIndex={99}
         flexDirection="row"
         px={{base: 5, xl: 20}}

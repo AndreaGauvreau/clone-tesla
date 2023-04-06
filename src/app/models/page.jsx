@@ -50,7 +50,7 @@ export default function Page() {
   }
   return (
     <>
-      <MainMenu />
+      <MainMenu position1="relative" position2="absolute" />
       <HeaderSection
         subtitle="Plaid"
         model="Model S"
@@ -65,11 +65,16 @@ export default function Page() {
             'Un système audio de 960 watts à 22 haut-parleurs avec Réduction active du bruit de la route offre une écoute immersive et un son de qualité studio.'
           }
           inverse={true}
+          image={'/images/modelsPage/interieur-2.jpeg'}
         />
         <ImageRevealAndText
           title={'Son immersif'}
           paragraph={
             'Connectez vos appareils instantanément grâce au Bluetooth supportant plusieurs connexions simultanées, ou rechargez rapidement vos appareils en tirant parti de la recharge sans fil et USB-C 36 W.'
+          }
+          isvideo={true}
+          image={
+            'https://tesla-cdn.thron.com/delivery/public/video/tesla/7aa04cc1-863e-4ac6-952e-4ea01457bf47/bvlatuR/WEBHD/MS-Interior-Grid-2-Audio-Desktop'
           }
         />
         <ImageRevealAndText
@@ -78,11 +83,12 @@ export default function Page() {
             "Grâce à des coffres avant et arrière ainsi qu'à des sièges rabattables à plat, vous pouvez embarquer vos bagages ou votre vélo sans avoir à retirer une roue."
           }
           inverse={true}
+          image={'/images/modelsPage/velo.jpeg'}
         />
       </Flex>
       <VideoTabs
         tabs={videoSection}
-        src="https://tesla-cdn.thron.com/static/LL2EQG_MS-Interior-Carousel-5-Gaming-Mobile_TB6BF4.mp4?xseo="
+        src="https://tesla-cdn.thron.com/delivery/public/video/tesla/9b04a9fb-e4ea-4198-9d3e-7837feccef68/bvlatuR/WEBHD/Model-S-Interior-Carousel-4-Second-Row-Desktop "
       />
       <Flex flexDirection={'column'} py={20} bg={'black'}>
         <ImageRevealAndText
@@ -91,12 +97,14 @@ export default function Page() {
             "Jantes et pneus dédiés à la performance, plus larges à l'arrière, maintiennent le véhicule stable et permettent de passer une puissance maximale sur la route."
           }
           inverse={true}
+          image={'/images/modelsPage/face-avant.webp'}
         />
         <ImageRevealAndText
           title={'Aérodynamique optimisée'}
           paragraph={
             "Une attention du détail portée sur l'ensemble des lignes extérieures fait de la Model S le véhicule de production le plus aérodynamique au monde"
           }
+          image={'/images/modelsPage/face-arriere.webp'}
         />
         <ImageRevealAndText
           title={'Style élégant'}
@@ -104,6 +112,7 @@ export default function Page() {
             "Une ligne emblématique combinées à d'élégantes proportions modernisées."
           }
           inverse={true}
+          image={'/images/modelsPage/roue.webp'}
         />{' '}
       </Flex>
     </>

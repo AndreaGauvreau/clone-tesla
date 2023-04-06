@@ -6,6 +6,7 @@ export default function ImageRevealAndText({
   paragraph = 'paragraph',
   image = '/images/model-s.webp',
   inverse = false,
+  isvideo = false,
 }) {
   return (
     <Flex align="center" justify="center" minW={'100%'} h={'100%'} bg={'black'}>
@@ -36,7 +37,17 @@ export default function ImageRevealAndText({
               h={'240px'}
               position={'relative'}
             >
-              <Image src={image} objectFit="cover" fill />
+              {isvideo ? (
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  src={image}
+                  style={{width: '100%', height: '100%', objectFit: 'cover'}}
+                />
+              ) : (
+                <Image src={image} objectFit="cover" fill />
+              )}
             </Box>
           </FadeInTop>
         </Box>
