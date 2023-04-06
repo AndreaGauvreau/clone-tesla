@@ -1,10 +1,10 @@
 import {motion, useAnimation} from 'framer-motion'
 import {useEffect} from 'react'
 import {useInView} from 'react-intersection-observer'
-export const FadeInTop = ({children, delay = 0}) => {
+export const FadeInTop = ({fromBottom = false, children, delay = 0}) => {
   const squareVariants = {
     visible: {opacity: 1, y: 0},
-    hidden: {opacity: 0, y: 100},
+    hidden: {opacity: 0, y: fromBottom ? 0 : 100},
   }
   const controls = useAnimation()
   const [ref, inView] = useInView()

@@ -111,31 +111,41 @@ export default function VideoTabs({src, tabs}) {
               <TabPanel>
                 <Flex flexDirection={'column'} gap={2}>
                   <Heading size="md">{tabs?.title1}</Heading>
-                  <Text mt={2}>{tabs?.desc1}</Text>
+                  <Text mt={2} variant={'basicmedium'}>
+                    {tabs?.desc1}
+                  </Text>
                 </Flex>
               </TabPanel>
               <TabPanel>
                 <Flex flexDirection={'column'} gap={2}>
                   <Heading size="md">{tabs?.title2}</Heading>
-                  <Text mt={2}>{tabs?.desc2}</Text>
+                  <Text mt={2} variant={'basicmedium'}>
+                    {tabs?.desc2}
+                  </Text>
                 </Flex>
               </TabPanel>
               <TabPanel>
                 <Flex flexDirection={'column'} gap={2}>
                   <Heading size="md">{tabs?.title3}</Heading>
-                  <Text mt={2}>{tabs?.desc3}</Text>
+                  <Text variant={'basicmedium'} mt={2}>
+                    {tabs?.desc3}
+                  </Text>
                 </Flex>
               </TabPanel>
               <TabPanel>
                 <Flex flexDirection={'column'} gap={2}>
                   <Heading size="md">{tabs?.title4}</Heading>
-                  <Text mt={2}>{tabs?.desc4}</Text>
+                  <Text mt={2} variant={'basicmedium'}>
+                    {tabs?.desc4}
+                  </Text>
                 </Flex>
               </TabPanel>
               <TabPanel>
                 <Flex flexDirection={'column'} gap={2}>
                   <Heading size="md">{tabs?.title5}</Heading>
-                  <Text mt={2}>{tabs?.desc5}</Text>
+                  <Text mt={2} variant={'basicmedium'}>
+                    {tabs?.desc5}
+                  </Text>
                 </Flex>
               </TabPanel>
             </TabPanels>

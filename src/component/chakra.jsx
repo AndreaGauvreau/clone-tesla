@@ -80,12 +80,18 @@ const theme = extendTheme({
     },
     Heading: {
       variants: {
-        headModel: {fontSize: '40px', lineHeight: '30px'},
+        headModel: {fontSize: '40px', lineHeight: '60px'},
         headModelsub: {fontSize: '28px', lineHeight: '25px'},
         basicmedium: {
           fontSize: '14px',
           lineHeight: '17px',
           fontWeight: '900',
+          fontFamily: 'Gotham Medium',
+        },
+        smallbasicmedium: {
+          fontSize: '18px',
+          lineHeight: '22px',
+          fontWeight: '400',
           fontFamily: 'Gotham Medium',
         },
       },
@@ -127,6 +133,18 @@ const theme = extendTheme({
           fontFamily: 'Gotham Medium',
           px: '50px',
           _hover: {bg: 'white', color: 'black'},
+        },
+        btnCommandligth: {
+          bg: 'transparent',
+          border: '3px solid black',
+          color: 'black',
+          borderRadius: '3px',
+          fontSize: '14px',
+          lineHeight: '14px',
+          fontWeight: '400',
+          fontFamily: 'Gotham Medium',
+          px: '50px',
+          _hover: {bg: 'black', color: 'white'},
         },
       },
     },

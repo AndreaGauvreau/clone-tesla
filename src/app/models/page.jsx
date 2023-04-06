@@ -7,6 +7,7 @@ import VideoTabs from '/src/component/compModel/videoTabs'
 import HeroImage from '/src/component/compModel/heroImage'
 import PointInterets from '/src/component/compModel/PointInterets'
 import {Flex} from '@chakra-ui/react'
+import Carrosserie from '/src/component/compModel/Carrosserie'
 export default function Page() {
   const content = {
     branch1: {i1: '600', i2: 'km', i3: 'Autonomie', i4: '(WLTP)'},
@@ -18,7 +19,7 @@ export default function Page() {
       i3: '‡Puissance du véhicule',
       mobile: false,
     },
-    cta: {text: 'Commander', link: '/'},
+    cta: {text: 'Commander', link: '/configurateur'},
   }
   const videoSection = {
     title1: 'Une expérience cinématographique',
@@ -56,7 +57,7 @@ export default function Page() {
         subtitle="Plaid"
         model="Model S"
         content={content}
-        image={'/images/model-s.webp'}
+        image={'/images/modelsPage/model-s.jpeg'}
       />
       <HeroImage image={'/images/modelsPage/interieur.webp'} />
       <Flex flexDirection={'column'} py={20} bg={'black'}>
@@ -115,8 +116,9 @@ export default function Page() {
           inverse={true}
           image={'/images/modelsPage/roue.webp'}
         />
-        <PointInterets />
       </Flex>
+      <PointInterets />
+      <Carrosserie />
     </>
   )
 }

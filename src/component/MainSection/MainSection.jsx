@@ -4,7 +4,7 @@ import React, {useRef, useState} from 'react'
 import {useMotionValueEvent, useScroll} from 'framer-motion'
 import Image from 'next/image'
 import {useEffect} from 'react'
-
+import {FadeInTop} from '../compModel/FaedinTop'
 export default function MainSection({pageInfos, index}) {
   const [opacity, setOpacity] = useState(0)
   const [indexs, setIndexs] = useState(0)
@@ -47,7 +47,7 @@ export default function MainSection({pageInfos, index}) {
         flexDirection="column"
         justifyContent={'space-between'}
         alignItems="center"
-        h={{base: '60svh', md: '80vh'}}
+        h={{base: '80svh', md: '80vh'}}
         zIndex={indexs}
         w={'100vw'}
       >
@@ -58,18 +58,20 @@ export default function MainSection({pageInfos, index}) {
           gap={0}
           zIndex={indexs}
         >
-          <Heading variant={'headModel'} textAlign="center">
-            {pageInfos?.title}
-          </Heading>
-          {pageInfos?.subtitleLink ? (
-            <Link href={pageInfos?.subtitleLink}>
-              <Text variant={'linkText'}>{pageInfos?.subtitle}</Text>
-            </Link>
-          ) : pageInfos?.subtitle ? (
-            <Text variant={'linkNoText'}>{pageInfos?.subtitle}</Text>
-          ) : (
-            ''
-          )}
+          <FadeInTop>
+            <Heading variant={'headModel'} textAlign="center">
+              {pageInfos?.title}
+            </Heading>
+            {pageInfos?.subtitleLink ? (
+              <Link href={pageInfos?.subtitleLink}>
+                <Text variant={'linkText'}>{pageInfos?.subtitle}</Text>
+              </Link>
+            ) : pageInfos?.subtitle ? (
+              <Text variant={'linkNoText'}>{pageInfos?.subtitle}</Text>
+            ) : (
+              ''
+            )}
+          </FadeInTop>
         </Flex>
         <Flex
           flexDirection="column"
@@ -86,16 +88,20 @@ export default function MainSection({pageInfos, index}) {
             justifyContent="center"
             boxSizing="border-box"
           >
-            <Link href={pageInfos?.bntLlink}>
-              <Button variant={'BtnLlink'}>{pageInfos?.btnL}</Button>
-            </Link>
-            {pageInfos?.btnRlink ? (
-              <Link href={pageInfos?.btnRlink}>
-                <Button variant={'BtnRlink'}>{pageInfos?.btnR}</Button>
+            <FadeInTop>
+              <Link href={pageInfos?.bntLlink}>
+                <Button variant={'BtnLlink'}>{pageInfos?.btnL}</Button>
               </Link>
+            </FadeInTop>{' '}
+            {pageInfos?.btnRlink ? (
+              <FadeInTop>
+                <Link href={pageInfos?.btnRlink}>
+                  <Button variant={'BtnRlink'}>{pageInfos?.btnR}</Button>
+                </Link>
+              </FadeInTop>
             ) : (
               ''
-            )}{' '}
+            )}
           </Flex>
           {pageInfos?.lastSubtitleLink ? (
             <Link href={pageInfos?.lastSubtitleLink}>
@@ -108,7 +114,7 @@ export default function MainSection({pageInfos, index}) {
       </Flex>
       <Flex
         w={'100%'}
-        minH={{base: '80svh', md: '100vh'}}
+        minH={{base: '100svh', md: '100vh'}}
         justifyContent="space-between"
         alignItems={'center'}
         flexDirection="column"

@@ -8,7 +8,7 @@ import {
   Skeleton,
   Text,
 } from '@chakra-ui/react'
-import React, {Suspense, useState} from 'react'
+import React, {useState} from 'react'
 import {colors} from '../ui/color'
 import MenuConfig from '../ui/MenuConfig'
 import PerformanceDetail from './ConfigComp/PerformanceDetail'
@@ -40,7 +40,7 @@ export default function Configurateur({
   setProgress,
 }) {
   const [threeSelect, setThreeSelect] = useState(false)
-  const [lightOn, setLightOn] = useState(true)
+  const [lightOn, setLightOn] = useState(false)
   const SelectCar = ({carNb}) => {
     return (
       <Flex
@@ -114,6 +114,7 @@ export default function Configurateur({
                   <Heading>{state?.progressModel}</Heading>
                 </Box>
               )}
+
               <CanvasModel
                 setProgress={setProgress}
                 state={state}
