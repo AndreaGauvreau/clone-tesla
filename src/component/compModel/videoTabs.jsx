@@ -23,9 +23,9 @@ export default function VideoTabs({src, tabs}) {
         h={'85vh'}
       >
         <Box
-          w={{base: '100%', lg: '900px'}}
+          w={{base: '90%', lg: '900px'}}
           h={'400px'}
-          borderRadius={{base: '0px', lg: '20px'}}
+          borderRadius={'20px'}
           overflow="hidden"
           position={'relative'}
         >
@@ -42,7 +42,7 @@ export default function VideoTabs({src, tabs}) {
           h={'200px'}
           justifyContent={'center'}
           alignItems={'flex-start'}
-          mt={20}
+          mt={{base: 10, md: 20}}
         >
           <Tabs
             color={'white'}

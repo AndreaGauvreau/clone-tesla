@@ -206,7 +206,7 @@ export default function MainMenu({position1 = 'fixed', position2 = 'fixed'}) {
                 <CloseIcon />
               </Flex>
               <DrawerBody>
-                <VStack spacing={5} align="start" px={5}>
+                <VStack spacing={7} align="start" px={5}>
                   {[
                     'Véhicules disponibles',
                     "Véhicules D'occasion",

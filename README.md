@@ -9,8 +9,8 @@ original, en y ajoutant une touche personnelle grâce à l'intégration de Three
 et React Three Fiber.
 
 <div>
-  <img src="./public/images/thumb-tesla-project.jpg" alt="Capture d'écran de l'application Tesla Clone" width="auto" />
-  <div>  <img src="./public/images/configurateur.jpg" alt="Capture d'écran de l'application Tesla Clone" width="400" />  <img src="./public/images/configurateur/scheenshot-app-tesla.png" alt="Capture d'écran de l'application Tesla Clone" width="400" /></div>
+  <img src="./public/images/thumb-tesla-project.jpg" alt="Capture d'écran de l'application Tesla Clone" width="100%" />
+  <div>  <img src="./public/images/configurateur.jpg" alt="Capture d'écran de l'application Tesla Clone" width="48%" />  <img src="./public/images/configurateur/scheenshot-app-tesla.png" alt="Capture d'écran de l'application Tesla Clone" width="50%" /></div>
 
 </div>
 

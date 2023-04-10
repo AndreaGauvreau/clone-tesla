@@ -1,6 +1,7 @@
 import {Box, Flex, Heading} from '@chakra-ui/react'
 import Image from 'next/image'
 import React from 'react'
+import {FadeInTop} from './FaedinTop'
 
 export default function HeroImage({
   image = '/images/model-s.webp',
@@ -11,18 +12,20 @@ export default function HeroImage({
       <Flex
         justifyContent={'center'}
         alignItems="center"
-        h={'200px'}
+        h={'150px'}
         w={'100%'}
         bg={'black'}
       >
-        <Heading variant={'headModel'} color="white" textAlign="center">
-          {model}
-        </Heading>
+        <FadeInTop>
+          <Heading variant={'headModelsub'} color="white" textAlign="center">
+            {model}
+          </Heading>
+        </FadeInTop>
       </Flex>
-      <Flex position={'relative'} h={{base: '90svh', md: '90vh'}}>
+      <Flex position={'relative'} h={{base: '100svh', md: '110vh'}}>
         <Box
           w={'100%'}
-          h={{base: '90svh', md: '90vh'}}
+          h={{base: '100svh', md: '110vh'}}
           position="relative"
           className="heroGradient2"
         >

@@ -66,6 +66,7 @@ export default function HeaderSection({
             justifyContent="space-around"
             boxSizing="border-box"
             zIndex={2}
+            maxW={'1000px'}
           >
             <Information i1={i1a} i2={i2a} i3={i3a} i4={i4a} delay={0} />
             <Information i1={i1b} i2={i2b} i3={i3b} i4={i4b} delay={0.1} />

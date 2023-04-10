@@ -1,19 +1,7 @@
-import {CloseIcon} from '@chakra-ui/icons'
-import {
-  Box,
-  Drawer,
-  DrawerBody,
-  DrawerContent,
-  DrawerHeader,
-  DrawerOverlay,
-  Flex,
-  Text,
-  useDisclosure,
-  VStack,
-} from '@chakra-ui/react'
+import {Box, Flex} from '@chakra-ui/react'
 import Image from 'next/image'
 import Link from 'next/link'
-import React, {useEffect, useRef} from 'react'
+import React from 'react'
 import './Mainmenu.css'
 export default function MenuConfig() {
   return (
