@@ -36,7 +36,6 @@ export default function HeaderSection({
         fill
         objectFit="cover"
         quality={100}
-        priority
         alt={`image de la tesla ${model}`}
         onLoad={() => setLoaded(true)}
         style={{opacity: loaded ? 1 : 0, transition: 'opacity 0.5s'}}
