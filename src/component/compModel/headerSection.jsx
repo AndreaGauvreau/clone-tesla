@@ -26,7 +26,7 @@ export default function HeaderSection({
         src={placeholder} // Remplacez par l'URL de votre image légère
         fill
         objectFit="cover"
-        quality={100}
+        quality={80}
         priority
         alt={`image légère de la Tesla ${model}`}
         style={{opacity: loaded ? 0 : 1, transition: 'opacity 0.5s'}}
@@ -35,7 +35,8 @@ export default function HeaderSection({
         src={image}
         fill
         objectFit="cover"
-        quality={100}
+        quality={80}
+        priority
         alt={`image de la tesla ${model}`}
         onLoad={() => setLoaded(true)}
         style={{opacity: loaded ? 1 : 0, transition: 'opacity 0.5s'}}
