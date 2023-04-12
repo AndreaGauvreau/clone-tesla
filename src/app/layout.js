@@ -1,3 +1,4 @@
+import Script from 'next/script'
 import Chakra from '../component/chakra'
 import './globals.css'
 
@@ -23,6 +24,16 @@ export default function RootLayout({children}) {
         <meta property="business:contact_data:locality" content="Lyon" />
         <meta property="business:contact_data:country_name" content="France" />
         <meta property="business:contact_data:email" content="mail@gmail.com" />
+        <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-ZD2Z20E2MN"
+        />
+        <Script>
+          {`  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-ZD2Z20E2MN');`}
+        </Script>
       </head>
       <body>
         <Chakra>{children}</Chakra>
