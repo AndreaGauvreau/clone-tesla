@@ -1,13 +1,14 @@
 'use client'
 import {Box, Flex, Heading, Text} from '@chakra-ui/react'
 import Image from 'next/image'
-import React from 'react'
+import React, {useState} from 'react'
 import Information from './information'
 import CtaBtn from './ctaBtn'
 import {FadeInTop} from './FaedinTop'
 
 export default function HeaderSection({
   image = '/images/model-s.webp',
+  placeholder = '/images/model-y-blur.jpg',
   model = 'Model S',
   subtitle,
   content = {},
@@ -17,9 +18,19 @@ export default function HeaderSection({
   const {i1: i1c, i2: i2c, i3: i3c, i4: i4c} = content.branch3 || {}
   const {i1: i1d, i2: i2d, i3: i3d, i4: i4d} = content.branch4 || {}
   const {text: ctaText, link: ctaLink} = content.cta || {}
+  const [loaded, setLoaded] = useState(false)
 
   return (
     <Box w={'100%'} h={{base: '90svh', md: '95vh'}} position="relative">
+      <Image
+        src={placeholder} // Remplacez par l'URL de votre image légère
+        fill
+        objectFit="cover"
+        quality={100}
+        priority
+        alt={`image légère de la Tesla ${model}`}
+        style={{opacity: loaded ? 0 : 1, transition: 'opacity 0.5s'}}
+      />
       <Image
         src={image}
         fill
@@ -27,6 +38,8 @@ export default function HeaderSection({
         quality={100}
         priority
         alt={`image de la tesla ${model}`}
+        onLoad={() => setLoaded(true)}
+        style={{opacity: loaded ? 1 : 0, transition: 'opacity 0.5s'}}
       />
       <Flex
         position={'absolute'}

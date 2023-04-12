@@ -58,6 +58,7 @@ export default function Page() {
         model="Model Y"
         content={content}
         image={'/images/modely.webp'}
+        placeholder={'/images/model-y-blur.jpg'}
       />
       <HeroImage image={'/images/modelsPage/interieur.webp'} />
       <Flex flexDirection={'column'} py={20} bg={'black'}>

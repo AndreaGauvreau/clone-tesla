@@ -63,6 +63,7 @@ export default function MainMenu({position1 = 'fixed', position2 = 'fixed'}) {
         ref={overlayRef}
         position={position1}
         zIndex={80}
+        top={'10px'}
       />
       <Flex
         position={position2}
