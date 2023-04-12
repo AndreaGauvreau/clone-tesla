@@ -4,60 +4,63 @@ import {
   Stage,
   useProgress,
   useGLTF,
+  PresentationControls,
 } from '@react-three/drei'
 import {Canvas} from '@react-three/fiber'
-import React, {Suspense, useEffect} from 'react'
+import React, {Suspense, useEffect, useState} from 'react'
 import {Bloom, EffectComposer} from '@react-three/postprocessing'
 import * as THREE from 'three'
-
+import LoaderIcon from '../../../ui/LoaderIcon'
 import {colorsCar, colorsInternCar} from '@/component/helpers/constantes'
+import {Box, Flex} from '@chakra-ui/react'
 //import {Model} from './Model'
 //const Model = dynamic(() => import('./Model'))
-function Loader() {
-  const {active, progress, errors, item, loaded, total} = useProgress()
+export function Loader() {
+  const {progress} = useProgress()
   useEffect(() => {
-    console.log('loaded', active, progress, loaded)
-  }, [active, progress, loaded])
-  return <Html center>{Math.floor(progress)} % </Html>
+    console.log('progress', progress)
+  }, [progress])
+  return <Html center>{progress} % loaded</Html>
 }
-export default function CanvasModel({state, setProgress, lightOn}) {
+
+export default function CanvasModel({state, lightOn}) {
   return (
     <>
-      <Canvas shadows camera={{position: [4, -1, 0], fov: 35}}>
-        <Stage
-          intensity={0.5}
-          preset="rembrandt"
-          shadows={{
-            type: 'accumulative',
-            color: 'black',
-            colorBlend: 2,
-            opacity: lightOn ? 0.7 : 1,
-          }}
-          environment={lightOn ? 'night' : 'city'}
-        >
-          <Suspense fallback={<Loader />}>
-            <Model state={state} lightOn={lightOn} />
-          </Suspense>
-          <EffectComposer>
-            <Bloom
-              luminanceThreshold={1}
-              luminanceSmoothing={3}
-              height={700}
-              intensity={10}
-              bloomScale={20.5}
-              mipmapBlur={10}
-              opacity={0.2}
-            />
-          </EffectComposer>
-        </Stage>
-        <OrbitControls
-          minPolarAngle={1.45}
-          maxPolarAngle={1.45}
-          makeDefault
-          enableZoom={true}
-          minDistance={1} // définir une valeur plus petite pour le zoom minimum
-          maxDistance={2}
-        />
+      <Canvas shadows dpr={[1, 2]} camera={{fov: 20, position: [0, 0, 8]}}>
+        <Suspense fallback={<Loader />}>
+          <PresentationControls
+            global
+            zoom={0.8}
+            rotation={[0, -Math.PI / 4, 0]}
+            polar={[0, Math.PI / 8]}
+            azimuth={[-Math.PI * 4, Math.PI * 4]}
+          >
+            <Stage
+              intensity={0.5}
+              preset="rembrandt"
+              shadows={{
+                type: 'accumulative',
+                color: 'black',
+                colorBlend: 2,
+                opacity: lightOn ? 0.7 : 1,
+              }}
+              environment={lightOn ? 'night' : 'city'}
+            >
+              <Model state={state} lightOn={lightOn} />
+              <EffectComposer>
+                <Bloom
+                  luminanceThreshold={1}
+                  luminanceSmoothing={3}
+                  height={700}
+                  intensity={10}
+                  bloomScale={20.5}
+                  mipmapBlur={10}
+                  opacity={0.2}
+                />
+              </EffectComposer>
+            </Stage>
+          </PresentationControls>
+        </Suspense>
       </Canvas>
     </>
   )

@@ -54,8 +54,8 @@ export default function Page() {
     <>
       <MainMenu position1="absolute" position2="absolute" />
       <HeaderSection
-        subtitle="Plaid"
-        model="Model S"
+        subtitle=""
+        model="Model Y"
         content={content}
         image={'/images/modely.webp'}
       />
