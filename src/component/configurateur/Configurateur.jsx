@@ -1,3 +1,4 @@
+'use client'
 import {MoonIcon, RepeatIcon, SunIcon, WarningIcon} from '@chakra-ui/icons'
 import {
   Box,
